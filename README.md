@@ -1,4 +1,4 @@
-# Python AI Learning Assistant 🤖
+# Python Learning Assistant 📚
 
 ## Overview:
 This interactive assistant guides beginners through Python's core concepts using a friendly, conversational approach. Instead of traditional textbook explanations, it uses real-world analogies and step-by-step guidance to make programming concepts intuitive and memorable.
