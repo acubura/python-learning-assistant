@@ -616,7 +616,7 @@ else:
 
 # ========== FINAL MESSAGE ==========
 print("\n" + "="*50)
-Assistant_Response = "Congratulations! You've completed the Python basics tutorial. You learned what you wanted!"
-print(Assistant_Response)
+AI_response = "Congratulations! You've completed the Python basics tutorial. You learned what you wanted!"
+print(AI_response)
 print("Keep practicing to enhance your skills. 🥷")
 print("="*50)
