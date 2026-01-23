@@ -1,7 +1,7 @@
-# AI introducing himself:
-Name = "Python AI"
+# Assistant introducing himself:
+Name = "Python Teaching Assistant"
 Version = "1.0"
-Description = "An AI developed to assist with Python programming and learning."
+Description = "An Assistant developed to guide you with Python programming and learning."
 
 def introduce():
     return f"Hello! I am {Name}, version {Version}. {Description}"
@@ -14,8 +14,8 @@ input("\nHow can I assist you with Python programming today? Press Enter to cont
 # Main conversation
 user_question = input("Type your question: ")
 
-AI_led_response = "I can teach you Python basics!"
-print(AI_led_response)
+Assistant_Response = "I can teach you Python basics!"
+print(Assistant_Response)
 print("\n" + "="*50)
 
 # ========== TOPIC 1: HELLO WORLD ==========
@@ -75,8 +75,8 @@ elif learn_hello.lower() == 'yes':
     
     explain_hello_world()
     
-    AI_response = "Awesome! You've learned how to print text in Python."
-    print(AI_response)
+    Assistant_Response = "Awesome! You've learned how to print text in Python."
+    print(Assistant_Response)
 else:
     print("Skipping Hello World...")
 
@@ -137,8 +137,8 @@ elif learn_functions.lower() == 'yes':
     
     explain_functions()
     
-    AI_response = "Awesome! You've learned about functions and how to create and use them."
-    print(AI_response)
+    Assistant_Response = "Awesome! You've learned about functions and how to create and use them."
+    print(Assistant_Response)
 else:
     print("Skipping Functions...")
 
@@ -202,8 +202,8 @@ elif learn_variables.lower() == 'yes':
     
     explain_variables()
     
-    AI_response = "Great job! You've learned about variables and their types."
-    print(AI_response)
+    Assistant_Response = "Great job! You've learned about variables and their types."
+    print(Assistant_Response)
 else:
     print("Skipping Variables...")
 
@@ -264,10 +264,9 @@ elif learn_operators.lower() == 'yes':
         print("EVERY 'IF' DECISION USES THESE OPERATORS!")
         print("=" * 50)
         
-        # MOVED THIS INSIDE THE FUNCTION (FIX #2)
         print("\n" + "=" * 50)
-        AI_response = "Of course! Relational operators compare two values and return True or False based on the comparison."
-        print(AI_response)
+        Assistant_Response = "Of course! Relational operators compare two values and return True or False based on the comparison."
+        print(Assistant_Response)
         print("\n   💡 Explanation:")
         print("   - Relational operators compare two values")
         print("   - Useful in decision-making and control flow")
@@ -371,9 +370,10 @@ elif learn_logical.lower() == 'yes':
         print("Logical operators help your code THINK SMARTER!")
         print("=" * 50)
     
-    explain_logical_operators()  # FIX #1: ADDED THIS MISSING FUNCTION CALL
+    explain_logical_operators()
     
-    print("\nGreat! You learned about logical operators!")
+    Assistant_Response = "Great! You learned about logical operators!"
+    print(Assistant_Response)
 else:
     print("Skipping Logical Operators...")
 
@@ -445,7 +445,8 @@ elif learn_type_conversion.lower() == 'yes':
     
     explain_type_conversion()
     
-    print("\nGreat! You learned about type conversion!")
+    Assistant_Response = "Great! You learned about type conversion!"
+    print(Assistant_Response)
 else:
     print("Skipping Type Conversion...")
 
@@ -498,13 +499,124 @@ elif learn_input_function.lower() == 'yes':
     
     explain_input_function()
     
-    print("\nGreat! You learned about the input function!")
+    Assistant_Response = "Great! You learned about the input function!"
+    print(Assistant_Response)
 else:
     print("Skipping Input Function...")
+
+# ======== TOPIC 9: COMMENTS IN PYTHON ==========
+learn_input_comments = input("\n🔹 Want to learn about Comments in Python? (yes/no/exit): ")
+if learn_input_comments.lower() == 'exit':
+    print("\n👋 Session ended. Goodbye!")
+    exit()
+elif learn_input_comments.lower() == 'yes':
+    print("\n" + "="*50)
+    print("9. Comments in Python:")
+    
+    def explain_comments():
+        print("\n   📝 What are comments?")
+        print("\n📝 COMMENTS: EXPLAINING YOUR CODE")
+        print("=" * 50)
         
+        print("""
+        🎯 WHAT ARE THEY?
+        Comments are notes in your code that are ignored by Python.
+        They help explain what your code does.
+        
+        🔧 HOW TO WRITE THEM:
+        # This is a single-line comment
+        # You can write anything here
+        
+        ''' This is a multi-line comment
+        You can write multiple lines here
+        Python will ignore all of them '''
+        
+        💡 EXAMPLES:
+        # This program calculates the area of a rectangle
+        length = 10
+        width = 5
+        area = length * width  # Calculate area
+        
+        🔑 TIPS:
+        • Use comments to explain complex logic
+        • Comment out code you want to test later
+        • Keep comments up-to-date with your code
+        
+        ⚠️ COMMON MISTAKES:
+        Don't over-comment simple lines!
+        """)
+        
+        print("\n" + "=" * 50)
+        print("Comments help OTHERS (and FUTURE YOU) understand your code!")
+        print("=" * 50)
+    
+    explain_comments()
+
+    Assistant_Response = "Great! You learned about comments!"
+    print(Assistant_Response)
+else:
+    print("Skipping Comments...")
+
+# ======== TOPIC 10: STRINGS IN PYTHON ==========
+learn_input_strings = input("\n🔹 Want to learn about Strings in Python? (yes/no/exit): ")
+if learn_input_strings.lower() == 'exit':
+    print("\n👋 Session ended. Goodbye!")
+    exit()
+elif learn_input_strings.lower() == 'yes':
+    print("\n" + "="*50)
+    print("10. Strings in Python:")
+    
+    def explain_strings():
+        print("\n   💬 What are strings?")
+        print("\n💬 STRINGS: TEXT DATA IN PYTHON")
+        print("=" * 50)
+        
+        print("""
+        🎯 WHAT ARE THEY?
+        Strings are sequences of characters used to store text data.
+        
+        🔧 HOW TO CREATE STRINGS:
+        Use single (' ') or double (" ") quotes.
+        
+        Examples:
+        name = 'Alice'
+        greeting = "Hello, World!"
+        
+        💡 STRING OPERATIONS:
+        • CONCATENATION: Combine strings using +
+          Example: full_name = first_name + " " + last_name
+          
+        • REPLICATION: Repeat strings using *
+          Example: laugh = "ha" * 3  # Output: "hahaha"
+          
+        • INDEXING: Access characters by position
+          Example: first_letter = name[0]  # 'A'
+          
+        • SLICING: Get substrings
+          Example: sub = greeting[0:5]  # 'Hello'
+        
+        🔑 TIPS:
+        • Strings are IMMUTABLE (cannot be changed)
+        • Use built-in methods for string manipulation (e.g., .upper(), .lower(), .strip())
+        
+        ⚠️ COMMON MISTAKES:
+        Forgetting to close quotes or mixing quote types!
+        """)
+        
+        print("\n" + "=" * 50)
+        print("Strings make your programs TALK!")
+        print("=" * 50)
+    
+    explain_strings()
+
+    Assistant_Response = "Great! You learned about strings!"
+    print(Assistant_Response)
+else:
+    print("Skipping Strings...")
+
 # ========== FINAL MESSAGE ==========
 print("\n" + "="*50)
-AI_response = "Congratulations! You've completed the Python basics tutorial. You learned what you wanted!"
-print(AI_response)
+Assistant_Response = "Congratulations! You've completed the Python basics tutorial. You learned what you wanted!"
+print(Assistant_Response)
 print("Keep practicing to enhance your skills. 🥷")
 print("="*50)
