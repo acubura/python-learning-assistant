@@ -67,7 +67,7 @@ cd python-learning-ai-assistant
 
 ### 3️⃣ Run the program
 ```bash
-python learning.py
+learning.py
 ```
 
 ---
