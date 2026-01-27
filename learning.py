@@ -8,28 +8,6 @@ def introduce():
 
 print(introduce())
 
-# Pause and ask for user input:
-input("\nHow can I assist you with Python programming today? Press Enter to continue...")
-
-# Main conversation
-user_question = input("Type your question: ")
-
-Assistant_Response = "I can teach you Python basics! with following topics:\n" \
-                     "Topics Menu 📚:\n" \
-                     "1. Hello World\n" \
-                     "2. Functions\n" \
-                     "3. Variables\n" \
-                     "4. Relational operators\n" \
-                     "5. Assignment operators\n" \
-                     "6. Logical operators\n" \
-                     "7. Type conversion\n" \
-                     "8. Input function\n" \
-                     "9. Comments in Python\n" \
-                     "10. Strings in Python\n" \
-
-print(Assistant_Response)
-print("\n" + "="*50)
-
 # ========== SMART INPUT VALIDATION FUNCTIONS ==========
 def get_global_valid_input(prompt):
     """Get and validate user input for yes/no/exit"""
@@ -112,6 +90,179 @@ def get_global_examples_valid_input(prompt):
             return 'no'
         
         print("⚠️  Please enter a valid response (yes/no)")
+
+def get_global_user_question_valid_input(prompt):
+    """Get and validate user input for questions"""
+    while True:
+        user_input = input(prompt).strip().lower()
+        
+        if not user_input:  # Empty input
+            print("⚠️  Please enter a valid response (yes/no/exit)")
+            continue
+        
+        # Check for yes variations
+        if user_input in ['yes', 'y', 'i have a question', 'ask a question', 'i want to ask a question', 
+                          'can you teach', 'can you help me', 'i need help', 'i wanted to ask you something', 
+                          'yeah! can you help me', 'yeah! I have a question']:
+            return 'yes'
+        # Check for no variations
+        elif user_input in ['no', 'n', 'no questions', 'i do not have a question', 'skip questions',
+                           'no! I do not have a question', 'nah! I do not want to ask a question', 
+                           'nuh ! I do not have any questions', 'nuh uh! I do not want to ask anything']:
+            return 'no'
+        # Check for exit variations
+        elif user_input in ['exit', 'e', 'exit the session', 'i want to exit', 'i want to leave', 'Nuh uh! I want to exit',
+                            'nah! I want to exit', 'no! I want to exit', 'i want to leave now', 'Nah! I am fine',
+                            'sorry! But I do not want to learn anything', 'i am good for now']:
+            return 'exit'
+        
+        # Check partial matches
+        elif user_input.startswith('y'):
+            return 'yes'
+        elif user_input.startswith('n'):
+            return 'no'
+        elif user_input.startswith('e'):
+            return 'exit'
+        elif 'question' in user_input or 'ask' in user_input:
+            return 'yes'
+        elif 'skip' in user_input or 'nah' in user_input or 'nuh' in user_input:
+            return 'no'
+        elif 'leave' in user_input or 'exit' in user_input:
+            return 'exit'
+        
+        print("⚠️  Please enter a valid response (yes/no/exit)")        
+
+# ========== START OF THE CONVERSATION ==========
+print("\nHow can I assist you with Python programming today?")
+
+# Ask if user has a specific question
+user_question = get_global_user_question_valid_input("\n🔹 Do you have any specific questions about Python? (yes/no/exit): ")
+
+# Handle user's question if they have one
+user_python_question = ""
+if user_question == 'yes':
+    # Use a validation function for the question too
+    def get_question_input(prompt):
+        while True:
+            question = input(prompt).strip()
+            if question:  # Not empty
+                return question
+            print("⚠️  Please enter a valid question.")
+    
+    print("\n🔹 Please ask your Python question:")
+    user_python_question = get_question_input("💬 Your Question: ")
+    print(f"\n🤖 Thank you for your question: '{user_python_question}'")
+    
+    user_input = get_global_valid_input("\n🔹 Would you like to learn Python topics? (yes/no/exit): ")
+    
+    # If user chooses 'exit' after asking question, end the session
+    if user_input == 'exit':
+        print("\n👋 Ok, goodbye! No class today, come back whenever you need me")
+        exit()         
+    # If user chooses 'no' after asking question, proceed to topics menu
+    elif user_input == 'no':
+        print("\n🔹 Okay, we will do it later")
+        exit()    
+
+elif user_question == 'no':
+    print("\n🔹 No problem! We can proceed to Python topics anytime you want.")
+    user_input = get_global_valid_input("\n🔹 Would you like to learn Python topics after break now? (yes/no/exit): ")
+    
+    if user_input == 'exit':
+        print("\n👋 Ok, goodbye! No class today, come back whenever you need me")
+        exit()
+    elif user_input == 'no':
+        print("\n👋 Ok, goodbye! No class today, come back whenever you need me")
+        exit()
+    # If user says 'yes', continue to topics menu
+    
+elif user_question == 'exit':
+    print("\n👋 Ok, goodbye! No class today, come back whenever you need me")
+    exit()
+    
+elif user_question == 'no':
+    print("\n🔹 No problem! We can proceed to Python topics anytime you want.")
+    user_input = get_global_valid_input("\n🔹 Would you like to learn Python topics after a break now? (yes/no/exit): ")
+    
+    if user_input == 'exit':
+        print("\n👋 Ok, goodbye! No class today, come back whenever you need me")
+        exit()
+    elif not user_input: #Empty Input
+        print("⚠️  Please enter a valid response (yes/no/exit)")
+    elif user_input == 'no':
+        print("\n👋 Ok, goodbye! No class today, come back whenever you need me")
+        exit()
+    # If user says 'yes', continue to topics menu
+    
+elif user_question == 'exit':
+    print("\n👋 Ok, goodbye! No class today, come back whenever you need me")
+    exit()
+
+# ========= TOPICS MENU ==========        
+print("\n" + "="*50)
+Assistant_Response = "I can teach you Python basics! Here are the available topics:\n" \
+                     "📚 Topics Menu:\n" \
+                     "1. Hello World\n" \
+                     "2. Functions\n" \
+                     "3. Variables\n" \
+                     "4. Relational operators\n" \
+                     "5. Assignment operators\n" \
+                     "6. Logical operators\n" \
+                     "7. Type conversion\n" \
+                     "8. Input function\n" \
+                     "9. Comments in Python\n" \
+                     "10. Strings in Python\n"
+
+print(Assistant_Response)
+print("="*50)
+
+# Get topic choice
+Assistant_Ask = "\n🔹 Which topic would you like to start with? (1-10/exit): "
+topic_choice = get_global_menu_choice(Assistant_Ask, 1, 10)
+
+if topic_choice == 'exit':
+    print("\n👋 Ok, goodbye! No class today, come back whenever you need me")
+    exit()
+
+# Map topic numbers to names
+topics = {
+    '1': 'Hello World',
+    '2': 'Functions',
+    '3': 'Variables',
+    '4': 'Relational operators',
+    '5': 'Assignment operators',
+    '6': 'Logical operators',
+    '7': 'Type conversion',
+    '8': 'Input function',
+    '9': 'Comments in Python',
+    '10': 'Strings in Python'
+}
+
+selected_topic = topics[topic_choice]
+print(f"\n🎯 Excellent choice! You selected: {selected_topic}")
+
+# Ask if they want to learn this topic
+learn_topic = get_global_valid_input(f"\n🔹 Would you like me to teach you about {selected_topic}? (yes/no/exit): ")
+
+if learn_topic == 'exit':
+    print("\n👋 Goodbye! Come back whenever you need me")
+    exit()
+elif learn_topic == 'no':
+    print(f"\n🔹 Okay, skipping {selected_topic}.")
+    print("\n🔹 You can select another topic from the menu.")
+    # In a full implementation, you would go back to topic selection here
+else:
+    print(f"\n📖 Teaching {selected_topic}...")
+    print("   (Note: In a full implementation, this is where the actual teaching would happen!)")
+    
+    # Ask if they want examples
+    examples_response = get_global_examples_valid_input(f"\n🔹 Would you like to see examples of {selected_topic}? (yes/no): ")
+    
+    if examples_response == 'yes':
+        print(f"\n📝 Here are some examples of {selected_topic}:")
+        print("   (Note: In a full implementation, real examples would be shown here!)")
+    
+    print(f"\n✅ Finished teaching {selected_topic}!")
 
 # ========== TOPIC 1: HELLO WORLD ==========
 learn_hello = get_global_valid_input("\n🔹 Want to learn about Hello World? (yes/no/exit): ")
@@ -1004,7 +1155,7 @@ else:
 
 # ========== FINAL MESSAGE ==========
 print("\n" + "="*50)
-AI_response = "Congratulations! You've completed the Python basics tutorial. You learned what you wanted!"
+AI_response = "Congratulations! You've completed the Python basics tutorial 🐍 You learned what you wanted!"
 print(AI_response)
 print("Keep practicing to enhance your skills. 🥷")
 print("="*50)
