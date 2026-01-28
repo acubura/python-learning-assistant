@@ -53,6 +53,12 @@ The **Strings** section is a complete mini-course inside the assistant. It cover
 
 ---
 
+## 🐛 Fixes
+
+- Fix the critical issue of Python Teaching Assistant unable to teach topics
+
+---
+
 ## 🚀 How to Run
 
 ### 1️⃣ Clone the repository
@@ -104,10 +110,15 @@ The assistant understands flexible human-like responses, not just strict command
 
 ## ⚙️ Requirements
 
-- Python **3.x**
+- Python **3.14**
 - No external libraries needed  
 
 Just install Python and run the script — that’s all.
+
+---
+
+## 🟢 When You Should Use Python 3.14
+Python 3.14 gives you better performance, improved security, and bug fixes, so your programs run faster and more safely. It also includes new language and library improvements that make coding easier and more modern. Using the latest version keeps your projects compatible with new tools and libraries.
 
 ---
 
