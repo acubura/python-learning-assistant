@@ -53,7 +53,7 @@ The **Strings** section is a complete mini-course inside the assistant. It cover
 
 ---
 
-## 🐛 Fixes
+## 🐛 Bug Fixes
 
 - Fix the critical issue of Python Teaching Assistant unable to teach topics
 
