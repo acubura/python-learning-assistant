@@ -139,6 +139,25 @@ Feel free to open an issue or submit a pull request.
 
 ---
 
+## 📢 February Contribution Challenge 🐍✨
+
+Hi learners! 👋  
+
+I’m taking a **break in February**, but you can still practice Python and improve your coding skills. Here’s a fun way to do it:  
+
+💡 **Your Task:**  
+- Contribute by **finding and fixing errors in the code**  
+- Use **DeepSeek AI only as a helper**, don’t rely on it to write everything  
+- Test your fixes and improve comments to make the project **beginner-friendly**  
+
+This is a **hands-on way to learn Python**, practice GitHub workflow, and help others at the same time.  
+
+📌 **Check the Contributing section** to see how to get started: [Contributing.md](./CONTRIBUTING.md)  
+📌 GitHub Repository: [Python Teaching Assistant](https://github.com/acubura/python-learning-assistant)  
+
+Let’s make coding **fun, interactive, and collaborative**! 🐍✨
+
+
 ## 📜 License
 
 This project is licensed under the **MIT License**.
