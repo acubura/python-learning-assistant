@@ -126,10 +126,14 @@ Python 3.14 gives you better performance, improved security, and bug fixes, so y
 
 Contributions are welcome! You can help by:
 
-- Improving explanations  
-- Adding new beginner-friendly topics  
-- Enhancing input validation  
-- Adding more practice exercises  
+You don’t have to be an expert to help. Here are some great ways to contribute:
+
+🧠 Improve beginner-friendly explanations
+✏️ Fix grammar or clarity in learning text
+➕ Add new beginner Python topics
+🧪 Add more practice questions or examples
+🐛 Report bugs or unexpected behavior
+💡 Suggest new learning features
 
 Feel free to open an issue or submit a pull request.
 
