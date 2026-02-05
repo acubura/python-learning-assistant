@@ -110,7 +110,7 @@ The assistant understands flexible human-like responses, not just strict command
 
 ## ⚙️ Requirements
 
-- Python **3.14**
+- Python **3.14.3**
 - No external libraries needed  
 
 Just install Python and run the script — that’s all.
