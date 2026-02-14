@@ -56,6 +56,7 @@ The **Strings** section is a complete mini-course inside the assistant. It cover
 ## 🐛 Bug Fixes
 
 - Fix the critical issue of Python Teaching Assistant unable to teach topics
+- Fixed the wrong “Run Bash Command” in the How to Run section
 
 ---
 
