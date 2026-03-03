@@ -109,10 +109,6 @@ This ensures better reliability and structure for all types of users.
   The assistant now correctly asks:  
   “Do you want to learn another topic?”
 
-- ✔ Fixed wrong “Run Bash Command” in the How to Run section  
-
-- ✔ Fixed critical issue where the Assistant was unable to teach topics properly  
-
 ---
 
 ## 📘 Topics Covered
