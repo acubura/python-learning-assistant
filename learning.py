@@ -1,10 +1,11 @@
 # Assistant introducing himself:
-Name = "Python Teaching Assistant"
-Version = "1.0"
+name = "Python Teaching Assistant"
+version = "1.0.1"
+category = "Preview"
 Description = "An Assistant developed to guide you with Python programming and learning."
 
 def introduce():
-    return f"Hello! I am {Name}, version {Version}. {Description}"
+    return f"Hello! I am {name}, version {version}, category, {category}. \n{Description}"
 
 print(introduce())
 
@@ -130,7 +131,93 @@ def get_global_user_question_valid_input(prompt):
         elif 'leave' in user_input or 'exit' in user_input:
             return 'exit'
         
-        print("⚠️  Please enter a valid response (yes/no/exit)")        
+        print("⚠️  Please enter a valid response (yes/no/exit)")
+
+def get_global_question_content_input(prompt):
+    """Get and validate the actual question content (not yes/no/exit)"""
+    while True:
+        question = input(prompt).strip()
+        
+        if not question:  # Empty input
+            print("⚠️  Please enter a valid question.")
+            continue
+        
+        question_lower = question.lower()
+        
+        # Reject if it's just a yes/no response (user misunderstood)
+        if question_lower in ['yes', 'y', 'no', 'n', 'ok', 'okay', 'exit', 'e']:
+            print("⚠️  Please ask an actual Python question, not just 'yes' or 'no'.")
+            continue
+        
+        # Check for question indicators
+        question_words = ['what', 'how', 'why', 'when', 'where', 'who', 'which', 
+                         'can', 'is', 'are', 'do', 'does', 'should', 'could', 'would', 'will']
+        
+        has_question_mark = '?' in question
+        has_question_word = any(question_lower.startswith(word) or f" {word} " in f" {question_lower} " 
+                               for word in question_words)
+        
+        # Check for Python-related terms
+        python_terms = ['python', 'function', 'variable', 'hello world', 'relational operator',
+                        'Assignment operator', 'logical operator', 'type conversion', 'input function',
+                        'comments', 'strings', 'programming', 'coding']
+        
+        has_python_term = any(term in question_lower for term in python_terms)
+        
+        # Check for common question patterns
+        has_how_to = 'how to' in question_lower
+        has_what_is = 'what is' in question_lower or "what's" in question_lower
+        has_why_does = 'why does' in question_lower or 'why is' in question_lower
+        has_can_you = 'can you' in question_lower
+        has_difference = 'difference between' in question_lower
+        has_example = 'example' in question_lower or 'sample' in question_lower
+        
+        has_question_pattern = any([has_how_to, has_what_is, has_why_does, 
+                                   has_can_you, has_difference, has_example])
+        
+        # Check if it's likely real words (has vowels)
+        words = question_lower.split()
+        if words:
+            real_word_count = 0
+            for word in words:
+                if any(vowel in word for vowel in 'aeiou'):
+                    real_word_count += 1
+            has_real_words = real_word_count >= len(words) // 2
+        else:
+            has_real_words = False
+        
+        # Final validation
+        is_proper_question = (
+            (has_question_mark or has_question_word or has_question_pattern) and
+            (has_python_term or has_question_pattern) and
+            has_real_words and
+            len(question) >= 5
+        )
+        
+        if is_proper_question:
+            return question
+        
+        # Helpful feedback
+        print("\n❌ That doesn't look like a proper Python question.")
+        if not (has_question_mark or has_question_word or has_question_pattern):
+            print("   • Start with: What, How, Why, Can you, etc.")
+        elif not has_python_term:
+            print("   • Include a Python term (function, variable, loop, etc.)")
+        elif not has_real_words:
+            print("   • Use real words in your question")
+        elif len(question) < 5:
+            print("   • Question is too short")
+        
+        print("\n📝 Examples:")
+        print("   • 'How do I create a function in Python?'")
+        print("   • 'What is a variable?'")
+        print("   • 'Can you explain loops?'")
+        print()
+
+# ========== Global Seperator for better readability ==========
+def print_global_separator():
+    global_separator = "\n" + "="*50
+    print(global_separator)
 
 # ========== START OF THE CONVERSATION ==========
 print("\nHow can I assist you with Python programming today?")
@@ -141,16 +228,8 @@ user_question = get_global_user_question_valid_input("\n🔹 Do you have any spe
 # Handle user's question if they have one
 user_python_question = ""
 if user_question == 'yes':
-    # Use a validation function for the question too
-    def get_question_input(prompt):
-        while True:
-            question = input(prompt).strip()
-            if question:  # Not empty
-                return question
-            print("⚠️  Please enter a valid question.")
-    
     print("\n🔹 Please ask your Python question:")
-    user_python_question = get_question_input("💬 Your Question: ")
+    user_python_question = get_global_question_content_input("💬 Your Question: ") 
     print(f"\n🤖 Thank you for your question: '{user_python_question}'")
     
     user_input = get_global_valid_input("\n🔹 Would you like to learn Python topics? (yes/no/exit): ")
@@ -183,7 +262,7 @@ elif user_question == 'exit':
 # ========= MAIN TOPICS LOOP ==========
 while True:
     # ========= TOPICS MENU ==========        
-    print("\n" + "="*50)
+    print_global_separator()
     Assistant_Response = "I can teach you Python basics! Here are the available topics:\n" \
                          "📚 Topics Menu:\n" \
                          "1. Hello World\n" \
@@ -198,7 +277,7 @@ while True:
                          "10. Strings in Python\n"
 
     print(Assistant_Response)
-    print("="*50)
+    print_global_separator()
 
     # Get topic choice
     Assistant_Ask = "\n🔹 Which topic would you like to start with? (1-10/exit): "
@@ -241,12 +320,12 @@ while True:
     # TEACH THE SELECTED TOPIC BASED ON USER'S CHOICE
     if selected_topic == 'Hello World':
         # ========== TOPIC 1: HELLO WORLD ==========
-        print("\n" + "="*50)
+        print_global_separator()
         print("1. Hello World Example:")
         print('   print("Hello, World!")')
         
         def explain_hello_world():
-            print("\n" + "=" * 50)
+            print_global_separator()
             print("🖨️ THE 'HELLO WORLD' PROGRAM")
             
             print("""
@@ -283,9 +362,9 @@ while True:
             else:
                 print("Skipping code breakdown...")
             
-            print("\n" + "=" * 50)
+            print_global_separator()
             print("You can try it whenever you want! Just type: print('Your Name Here')")
-            print("=" * 50)
+            print_global_separator()
         
         explain_hello_world()
         
@@ -294,13 +373,13 @@ while True:
     
     elif selected_topic == 'Functions':
         # ========== TOPIC 2: FUNCTIONS ==========
-        print("\n" + "="*50)
+        print_global_separator()
         print("2. Functions in Python:")
         
         def explain_functions():
             print("\n   📦 What are functions?")
             print("\n🤖 FUNCTIONS = YOUR CODING ASSISTANTS")
-            print("=" * 50)
+            print_global_separator()
             
             print("""
             🎯 WHAT ARE FUNCTIONS?
@@ -349,13 +428,13 @@ while True:
     
     elif selected_topic == 'Variables':
         # ========== TOPIC 3: VARIABLES ==========
-        print("\n" + "="*50)
+        print_global_separator()
         print("3. Variables in Python:")
         
         def explain_variables():
             print("\n   🏷️ What are variables?")
             print("\n📦 VARIABLES: YOUR CODE'S STORAGE BOXES")
-            print("=" * 50)
+            print_global_separator()
             
             print("""
             🎯 WHAT ARE VARIABLES?
@@ -396,9 +475,9 @@ while True:
             else:
                 print("Skipping examples...")
             
-            print("\n" + "=" * 50)
+            print_global_separator()
             print("ALWAYS REMEMBER VARIABLES SO, YOU DON'T HAVE TO!")
-            print("=" * 50)
+            print_global_separator()
         
         explain_variables()
         
@@ -407,13 +486,13 @@ while True:
     
     elif selected_topic == 'Relational operators':
         # ========== TOPIC 4: RELATIONAL OPERATORS ==========
-        print("\n" + "="*50)
+        print_global_separator()
         print("4. Relational Operators in Python:")
         
         def explain_relational_operators():
             print("\n   🔍 What are relational operators?")
             print("\n🔍 RELATIONAL OPERATORS: CODE'S COMPARISON TOOLS")
-            print("=" * 50)
+            print_global_separator()
             
             print("""
             🎯 WHAT ARE THEY?
@@ -453,11 +532,11 @@ while True:
             else:
                 print("Skipping examples...")
             
-            print("\n" + "=" * 50)
+            print_global_separator()
             print("EVERY 'IF' DECISION USES THESE OPERATORS!")
-            print("=" * 50)
+            print_global_separator()
             
-            print("\n" + "=" * 50)
+            print_global_separator()
             Assistant_Response = "Of course! Relational operators compare two values and return True or False based on the comparison."
             print(Assistant_Response)
             print("\n   💡 Explanation:")
@@ -468,13 +547,13 @@ while True:
     
     elif selected_topic == 'Assignment operators':
         # ========= TOPIC 5: Assignment Operators ==========
-        print("\n" + "="*50)
+        print_global_separator()
         print("5. Assignment Operators in Python:")
         
         def explain_assignment_operators():
             print("\n   📝 What are assignment operators?")
             print("\n📝 ASSIGNMENT OPERATORS: CODE'S VALUE ASSIGNERS")
-            print("=" * 50)
+            print_global_separator()
             
             print("""
             🎯 WHAT ARE THEY?
@@ -501,9 +580,9 @@ while True:
             These are SHORTCUTS for updating variables!
             """)
             
-            print("\n" + "=" * 50)
+            print_global_separator()
             print("Assignment operators make your code SHORTER!")
-            print("=" * 50)
+            print_global_separator()
         
         explain_assignment_operators()
         
@@ -511,13 +590,13 @@ while True:
     
     elif selected_topic == 'Logical operators':
         # ========= TOPIC 6: LOGICAL OPERATORS ==========
-        print("\n" + "="*50)
+        print_global_separator()
         print("6. Logical Operators in Python:")
         
         def explain_logical_operators():
             print("\n   🤔 What are logical operators?")
             print("\n🤔 LOGICAL OPERATORS: CODE'S THINKING TOOLS")
-            print("=" * 50)
+            print_global_separator()
             
             print("""
             🎯 WHAT ARE THEY?
@@ -547,9 +626,9 @@ while True:
             Use logical operators to COMBINE CONDITIONS!
             """)
             
-            print("\n" + "=" * 50)
+            print_global_separator()
             print("Logical operators help your code THINK SMARTER!")
-            print("=" * 50)
+            print_global_separator()
         
         explain_logical_operators()
         
@@ -558,13 +637,13 @@ while True:
     
     elif selected_topic == 'Type conversion':
         # ==== TOPIC 7: TYPE CONVERSION ===========
-        print("\n" + "="*50)
+        print_global_separator()
         print("7. Type Conversion in Python:")
         
         def explain_type_conversion():
             print("\n   🔄 What is type conversion?")
             print("\n🔄 TYPE CONVERSION: CHANGING DATA TYPES")
-            print("=" * 50)
+            print_global_separator()
             
             print("""
             🎯 WHAT IS IT?
@@ -614,9 +693,9 @@ while True:
             int("10.5")    # ❌ Error: Use float() first!
             """)
             
-            print("\n" + "=" * 50)
+            print_global_separator()
             print("Implicit = Python decides, Explicit = YOU decide!")
-            print("=" * 50)
+            print_global_separator()
         
         explain_type_conversion()
         
@@ -625,13 +704,13 @@ while True:
     
     elif selected_topic == 'Input function':
         # ========= TOPIC 8: INPUT FUNCTION ==========
-        print("\n" + "="*50)
+        print_global_separator()
         print("8. Input Function in Python:")
         
         def explain_input_function():
             print("\n   🖊️ What is the input function?")
             print("\n🖊️ INPUT FUNCTION: GETTING USER DATA")
-            print("=" * 50)
+            print_global_separator()
             
             print("""
             🎯 WHAT IS IT?
@@ -662,9 +741,9 @@ while True:
             next_age = age + 1   # ✅ Works perfectly!
             """)
             
-            print("\n" + "=" * 50)
+            print_global_separator()
             print("Input function makes your program INTERACTIVE!")
-            print("=" * 50)
+            print_global_separator()
         
         explain_input_function()
         
@@ -673,13 +752,13 @@ while True:
     
     elif selected_topic == 'Comments in Python':
         # ======== TOPIC 9: COMMENTS IN PYTHON ==========
-        print("\n" + "="*50)
+        print_global_separator()
         print("9. Comments in Python:")
         
         def explain_comments():
             print("\n   📝 What are comments?")
             print("\n📝 COMMENTS: EXPLAINING YOUR CODE")
-            print("=" * 50)
+            print_global_separator()
             
             print("""
             🎯 WHAT ARE THEY?
@@ -709,9 +788,105 @@ while True:
             Don't over-comment simple lines!
             """)
             
-            print("\n" + "=" * 50)
+            print_global_separator()
             print("Comments help OTHERS (and FUTURE YOU) understand your code!")
-            print("=" * 50)
+            print_global_separator()
+        
+        explain_comments()
+
+        Assistant_Response = "Great! You learned about comments!"
+        print(Assistant_Response)
+    
+    
+    elif selected_topic == 'Input function':
+        # ========= TOPIC 8: INPUT FUNCTION ==========
+        print_global_separator()
+        print("8. Input Function in Python:")
+        
+        def explain_input_function():
+            print("\n   🖊️ What is the input function?")
+            print("\n🖊️ INPUT FUNCTION: GETTING USER DATA")
+            print_global_separator()
+            
+            print("""
+            🎯 WHAT IS IT?
+            The input() function allows your program to 
+            TAKE INPUT from the user during execution.
+            
+            🔧 HOW TO USE IT:
+            syntax: variable = input("Prompt message: ")
+            
+            💡 EXAMPLE USAGE:
+            name = input("Enter your name: ")   # User types their name
+            print("Hello, " + name + "!")        # Greets the user
+            
+            age = input("Enter your age: ")      # User types their age
+            age_next_year = int(age) + 1         # Convert to int and add 1
+            print("Next year, you will be " + str(age_next_year) + " years old.")
+            
+            🔑 IMPORTANT NOTE:
+            The input() function ALWAYS returns a STRING.
+            Convert to other types (int, float) as needed!
+            
+            ⚠️ COMMON MISTAKES:
+            age = input("Enter your age: ")
+            next_age = age + 1   # ❌ Error: Can't add int to str!
+            
+            Correct way:
+            age = int(input("Enter your age: "))
+            next_age = age + 1   # ✅ Works perfectly!
+            """)
+            
+            print_global_separator()
+            print("Input function makes your program INTERACTIVE!")
+            print_global_separator()
+        
+        explain_input_function()
+        
+        Assistant_Response = "Great! You learned about the input function!"
+        print(Assistant_Response)
+    
+    elif selected_topic == 'Comments in Python':
+        # ======== TOPIC 9: COMMENTS IN PYTHON ==========
+        print_global_separator()
+        print("9. Comments in Python:")
+        
+        def explain_comments():
+            print("\n   📝 What are comments?")
+            print("\n📝 COMMENTS: EXPLAINING YOUR CODE")
+            print_global_separator()
+            
+            print("""
+            🎯 WHAT ARE THEY?
+            Comments are notes in your code that are ignored by Python.
+            They help explain what your code does.
+            
+            🔧 HOW TO WRITE THEM:
+            # This is a single-line comment
+            # You can write anything here
+            
+            ''' This is a multi-line comment
+            You can write multiple lines here
+            Python will ignore all of them '''
+            
+            💡 EXAMPLES:
+            # This program calculates the area of a rectangle
+            length = 10
+            width = 5
+            area = length * width  # Calculate area
+            
+            🔑 TIPS:
+            • Use comments to explain complex logic
+            • Comment out code you want to test later
+            • Keep comments up-to-date with your code
+            
+            ⚠️ COMMON MISTAKES:
+            Don't over-comment simple lines!
+            """)
+            
+            print_global_separator()
+            print("Comments help OTHERS (and FUTURE YOU) understand your code!")
+            print_global_separator()
         
         explain_comments()
 
@@ -720,30 +895,255 @@ while True:
     
     elif selected_topic == 'Strings in Python':
         # ======== TOPIC 10: STRINGS IN PYTHON ==========
-        print("\n" + "="*50)
+        print_global_separator()
         print("10. Strings in Python:")
-        
-        def explain_strings():
-            print("\n   💬 What are strings?")
-            print("\n💬 STRINGS: TEXT DATA IN PYTHON")
-            print("=" * 50)
+
+        # Define all helper functions FIRST before they are called
+        def teach_string_basics():
+            """Teach string basics"""
+            print_global_separator()
+            print("📘 PART 1: String Basics & Creation")
+            print_global_separator()
             
             print("""
-            🎯 WHAT ARE STRINGS?
-            Strings are SEQUENCES OF CHARACTERS used to store and manipulate text.
-            In Python, strings are IMMUTABLE (cannot be changed once created).
-            
-            🔧 CREATING STRINGS:
-            • Single quotes: 'Hello'
-            • Double quotes: "World"
-            • Triple quotes: '''Multi-line strings''' or \"\"\"Also multi-line\"\"\"
+        📝 BASIC STRING EXAMPLES:
+        name = 'Alice'                    # Single quotes
+        greeting = "Hello, World!"        # Double quotes
+        paragraph = '''This is a           # Multi-line string
+        multi-line string that
+        spans several lines.'''
+        
+        🎯 KEY POINTS:
+        • Strings can use single, double, or triple quotes
+        • Triple quotes allow multi-line strings
+        • Strings are IMMUTABLE (cannot be modified)
+        • Use len() to get string length
             """)
             
-            # String topics tracker
+            examples_choice = get_global_examples_valid_input("\n🔹 Want to see examples? (yes/no): ")
+            if examples_choice == 'yes':
+                text = "Python Programming"
+                print(f"\n   text = \"{text}\"")
+                print(f"   Length: {len(text)} characters")
+                print(f"   Type: {type(text)}")
+                print(f"   Uppercase: {text.upper()}")
+                print(f"   Lowercase: {text.lower()}")
+
+        def teach_string_indexing():
+            """Teach string indexing and slicing"""
+            print_global_separator()
+            print("📘 PART 2: Indexing & Slicing")
+            print_global_separator()
+            
+            print("""
+        🔤 INDEXING (Accessing individual characters):
+        Python uses ZERO-BASED indexing
+        
+        Positions:   0   1   2   3   4   5
+        String:     P   y   t   h   o   n
+        Index:      0   1   2   3   4   5
+        Negative:  -6  -5  -4  -3  -2  -1
+        
+        🔪 SLICING (Getting parts of string):
+        Syntax: string[start:end:step]
+        • start: Starting index (inclusive)
+        • end: Ending index (exclusive)
+        • step: Jump size
+            """)
+            
+            examples_choice = get_global_examples_valid_input("\n🔹 Want to see examples? (yes/no): ")
+            if examples_choice == 'yes':
+                text = "PythonProgramming"
+                print(f"\n   text = \"{text}\"")
+                print(f"   text[0] = '{text[0]}'           # First character")
+                print(f"   text[-1] = '{text[-1]}'         # Last character")
+                print(f"   text[0:6] = \"{text[0:6]}\"     # Characters 0 to 5")
+                print(f"   text[6:] = \"{text[6:]}\"       # From index 6 to end")
+                print(f"   text[::-1] = \"{text[::-1]}\"   # Reversed string")
+
+        def teach_string_operations():
+            """Teach string operations"""
+            print_global_separator()
+            print("📘 PART 3: String Operations")
+            print_global_separator()
+            
+            print("""
+        ⚙️ CONCATENATION (+): Joining strings
+        str1 = "Hello"
+        str2 = "World"
+        result = str1 + " " + str2  # "Hello World"
+        
+        🔁 REPLICATION (*): Repeating strings
+        laugh = "ha" * 3  # "hahaha"
+        separator = "-" * 20  # "--------------------"
+        
+        🔍 MEMBERSHIP (in/not in): Check substring
+        text = "Python is awesome"
+        has_python = "Python" in text  # True
+        has_java = "Java" not in text  # True
+            """)
+            
+            examples_choice = get_global_examples_valid_input("\n🔹 Want to see examples? (yes/no): ")
+            if examples_choice == 'yes':
+                str1 = "Hello"
+                str2 = "World"
+                print(f"\n   str1 = \"{str1}\"")
+                print(f"   str2 = \"{str2}\"")
+                print(f"   Concatenation: str1 + ' ' + str2 = \"{str1 + ' ' + str2}\"")
+                print(f"   Replication: 'ha' * 3 = \"{'ha' * 3}\"")
+                print(f"   Membership: 'Python' in 'Python Programming' = {'Python' in 'Python Programming'}")
+
+        def teach_string_methods():
+            """Teach string methods"""
+            print_global_separator()
+            print("📘 PART 4: String Methods")
+            print_global_separator()
+            
+            print("""
+        🛠️ COMMON STRING METHODS:
+        
+        ✂️ TRIMMING:
+        spaced = "   Hello   "
+        stripped = spaced.strip()      # "Hello"
+        left_stripped = spaced.lstrip() # "Hello   "
+        right_stripped = spaced.rstrip() # "   Hello"
+        
+        🔎 SEARCHING:
+        text = "Python Programming"
+        find_pro = text.find("Pro")    # 7 (index where found)
+        count_n = text.count("n")      # 2 (count of 'n')
+        
+        🔀 SPLITTING & JOINING:
+        sentence = "Python,Java,C++"
+        languages = sentence.split(",") # ["Python", "Java", "C++"]
+        new_sentence = "-".join(languages) # "Python-Java-C++"
+        
+        🔧 REPLACING:
+        text = "I love Java"
+        new_text = text.replace("Java", "Python") # "I love Python"
+            """)
+            
+            examples_choice = get_global_examples_valid_input("\n🔹 Want to see examples? (yes/no): ")
+            if examples_choice == 'yes':
+                text = "   Python Programming   "
+                print(f"\n   text = \"{text}\"")
+                print(f"   strip(): \"{text.strip()}\"")
+                print(f"   upper(): \"{text.upper()}\"")
+                print(f"   lower(): \"{text.lower()}\"")
+                print(f"   replace('Python', 'Java'): \"{text.replace('Python', 'Java')}\"")
+                print(f"   split(): {text.strip().split()}")
+
+        def teach_string_formatting():
+            """Teach string formatting"""
+            print_global_separator()
+            print("📘 PART 5: String Formatting")
+            print_global_separator()
+            
+            print("""
+        🎨 STRING FORMATTING METHODS:
+        
+        1️⃣ f-strings (Python 3.6+): RECOMMENDED!
+        name = "Alice"
+        age = 25
+        message = f"My name is {name} and I am {age} years old."
+        # Result: "My name is Alice and I am 25 years old."
+        
+        2️⃣ format() method:
+        message = "My name is {} and I am {} years old.".format(name, age)
+        
+        3️⃣ % formatting (old style):
+        message = "My name is %s and I am %d years old." % (name, age)
+        
+        🎯 NUMBER FORMATTING:
+        price = 49.9999
+        formatted = f"Price: ${price:.2f}"  # "Price: $50.00"
+        
+        pi = 3.1415926535
+        formatted_pi = f"Pi: {pi:.4f}"     # "Pi: 3.1416"
+            """)
+            
+            examples_choice = get_global_examples_valid_input("\n🔹 Want to see examples? (yes/no): ")
+            if examples_choice == 'yes':
+                name = "Alice"
+                age = 25
+                price = 49.9999
+                print(f"\n   name = \"{name}\", age = {age}, price = {price}")
+                print(f"   f-string: f'Name: {name}, Age: {age}' = \"{f'Name: {name}, Age: {age}'}\"")
+                print("   format(): 'Name: {}, Age: {}' = \"" + 'Name: {}, Age: {}'.format(name, age) + "\"")
+                print(f"   Number formatting: f'Price: ${price:.2f}' = \"{f'Price: ${price:.2f}'}\"")
+
+        def teach_string_errors():
+            """Teach common string errors and best practices"""
+            print_global_separator()
+            print("📘 PART 6: Common Errors & Best Practices")
+            print_global_separator()
+            
+            print("""
+        ⚠️ COMMON STRING ERRORS:
+        
+        1️⃣ IMMUTABILITY ERROR:
+        text = "Hello"
+        text[0] = "J"  # ❌ ERROR! Strings are immutable
+        
+        Correct approach:
+        text = "J" + text[1:]  # ✅ Creates new string "Jello"
+        
+        2️⃣ ESCAPE CHARACTERS:
+        # Wrong: path = "C:\\new folder"  # \\n is newline!
+        # Right: path = "C:\\\\new folder" or r"C:\\new folder"
+        
+        Common escape sequences:
+        \\n → New line
+        \\t → Tab
+        \\\\ → Backslash
+        \\" → Double quote
+        \\' → Single quote
+        
+        3️⃣ MIXING DATA TYPES:
+        age = 25
+        # Wrong: message = "I am " + age + " years old"
+        # Right: message = "I am " + str(age) + " years old"
+        # Better: message = f"I am {age} years old"
+        
+        💡 BEST PRACTICES:
+        1. Use f-strings for formatting (Python 3.6+)
+        2. Remember strings are IMMUTABLE
+        3. Use .strip() to clean user input
+        4. Prefer .join() for concatenating many strings
+        5. Use raw strings (r"") for paths and regex
+            """)
+
+        def teach_all_string_topics():
+            """Teach all string topics in sequence"""
+            teach_string_basics()
+            teach_string_indexing()
+            teach_string_operations()
+            teach_string_methods()
+            teach_string_formatting()
+            teach_string_errors()
+
+        def explain_strings():
+            """Comprehensive guide to Python strings"""
+            print("\n   💬 What are strings?")
+            print("\n💬 STRINGS: TEXT DATA IN PYTHON")
+            print_global_separator()
+            
+            print("""
+        🎯 WHAT ARE STRINGS?
+        Strings are SEQUENCES OF CHARACTERS used to store and manipulate text.
+        In Python, strings are IMMUTABLE (cannot be changed once created).
+        
+        🔧 CREATING STRINGS:
+        • Single quotes: 'Hello'
+        • Double quotes: "World"
+        • Triple quotes: '''Multi-line strings''' or \"\"\"Also multi-line\"\"\"
+            """)
+            
+            # Track which topics have been learned
             topics_learned = []
-            current_topic = None
             
             while True:
+                # Display menu
                 print("\n📚 STRINGS TOPIC MENU:")
                 print("   1. String Basics & Creation")
                 print("   2. Indexing & Slicing")
@@ -756,287 +1156,81 @@ while True:
                 
                 topic_choice = get_global_menu_choice("\n🔹 Which string topic would you like to learn? (1-8/exit): ", 1, 8)
                 
+                # Handle exit
                 if topic_choice == 'exit':
                     print("\n👋 Session ended. Goodbye!")
                     exit()
                 
+                # Handle return to main menu
                 if topic_choice == '8':
                     print("\n✅ Exiting strings section...")
                     break
                 
-                # Check if topic was already learned
+                # Check if topic was already learned (skip for "All topics")
                 if topic_choice in topics_learned and topic_choice != '7':
                     review = get_global_valid_input(f"\n🔹 You've already learned topic {topic_choice}. Review it again? (yes/no): ")
                     if review == 'no':
                         continue
                 
-                # PART 1: String Basics
-                if topic_choice in ['1', '7'] and (topic_choice == '7' or '1' not in topics_learned):
-                    current_topic = "String Basics & Creation"
-                    print("\n" + "="*50)
-                    print(f"📘 PART 1: {current_topic}")
-                    print("="*50)
-                    
-                    print("""
-                    📝 BASIC STRING EXAMPLES:
-                    name = 'Alice'                    # Single quotes
-                    greeting = "Hello, World!"        # Double quotes
-                    paragraph = '''This is a           # Multi-line string
-                    multi-line string that
-                    spans several lines.'''
-                    
-                    🎯 KEY POINTS:
-                    • Strings can use single, double, or triple quotes
-                    • Triple quotes allow multi-line strings
-                    • Strings are IMMUTABLE (cannot be modified)
-                    • Use len() to get string length
-                    """)
-                    
-                    if topic_choice != '7':
-                        topics_learned.append('1')
-                    
-                    # Ask about examples for this specific topic
-                    examples_choice = get_global_examples_valid_input(f"\n🔹 Want to see examples for {current_topic}? (yes/no): ")
-                    if examples_choice == 'yes':
-                        text = "Python Programming"
-                        print(f"\n   text = \"{text}\"")
-                        print(f"   Length: {len(text)} characters")
-                        print(f"   Type: {type(text)}")
-                        print(f"   Uppercase: {text.upper()}")
-                        print(f"   Lowercase: {text.lower()}")
-                
-                # PART 2: Indexing & Slicing
-                if topic_choice in ['2', '7'] and (topic_choice == '7' or '2' not in topics_learned):
-                    current_topic = "Indexing & Slicing"
-                    print("\n" + "="*50)
-                    print(f"📘 PART 2: {current_topic}")
-                    print("="*50)
-                    
-                    print("""
-                    🔤 INDEXING (Accessing individual characters):
-                    Python uses ZERO-BASED indexing
-                    
-                    Positions:   0   1   2   3   4   5
-                    String:     P   y   t   h   o   n
-                    Index:      0   1   2   3   4   5
-                    Negative:  -6  -5  -4  -3  -2  -1
-                    
-                    🔪 SLICING (Getting parts of string):
-                    Syntax: string[start:end:step]
-                    • start: Starting index (inclusive)
-                    • end: Ending index (exclusive)
-                    • step: Jump size
-                    """)
-                    
-                    if topic_choice != '7':
-                        topics_learned.append('2')
-                    
-                    examples_choice = get_global_examples_valid_input(f"\n🔹 Want to see examples for {current_topic}? (yes/no): ")
-                    if examples_choice == 'yes':
-                        text = "PythonProgramming"
-                        print(f"\n   text = \"{text}\"")
-                        print(f"   text[0] = '{text[0]}'           # First character")
-                        print(f"   text[-1] = '{text[-1]}'         # Last character")
-                        print(f"   text[0:6] = \"{text[0:6]}\"     # Characters 0 to 5")
-                        print(f"   text[6:] = \"{text[6:]}\"       # From index 6 to end")
-                        print(f"   text[::-1] = \"{text[::-1]}\"   # Reversed string")
-                
-                # PART 3: String Operations
-                if topic_choice in ['3', '7'] and (topic_choice == '7' or '3' not in topics_learned):
-                    current_topic = "String Operations"
-                    print("\n" + "="*50)
-                    print(f"📘 PART 3: {current_topic}")
-                    print("="*50)
-                    
-                    print("""
-                    ⚙️ CONCATENATION (+): Joining strings
-                    str1 = "Hello"
-                    str2 = "World"
-                    result = str1 + " " + str2  # "Hello World"
-                    
-                    🔁 REPLICATION (*): Repeating strings
-                    laugh = "ha" * 3  # "hahaha"
-                    separator = "-" * 20  # "--------------------"
-                    
-                    🔍 MEMBERSHIP (in/not in): Check substring
-                    text = "Python is awesome"
-                    has_python = "Python" in text  # True
-                    has_java = "Java" not in text  # True
-                    """)
-                    
-                    if topic_choice != '7':
-                        topics_learned.append('3')
-                    
-                    examples_choice = get_global_examples_valid_input(f"\n🔹 Want to see examples for {current_topic}? (yes/no): ")
-                    if examples_choice == 'yes':
-                        str1 = "Hello"
-                        str2 = "World"
-                        print(f"\n   str1 = \"{str1}\"")
-                        print(f"   str2 = \"{str2}\"")
-                        print(f"   Concatenation: str1 + ' ' + str2 = \"{str1 + ' ' + str2}\"")
-                        print(f"   Replication: 'ha' * 3 = \"{'ha' * 3}\"")
-                        print(f"   Membership: 'Python' in 'Python Programming' = {'Python' in 'Python Programming'}")
-                
-                # PART 4: String Methods
-                if topic_choice in ['4', '7'] and (topic_choice == '7' or '4' not in topics_learned):
-                    current_topic = "String Methods"
-                    print("\n" + "="*50)
-                    print(f"📘 PART 4: {current_topic}")
-                    print("="*50)
-                    
-                    print("""
-                    🛠️ COMMON STRING METHODS:
-                    
-                    ✂️ TRIMMING:
-                    spaced = "   Hello   "
-                    stripped = spaced.strip()      # "Hello"
-                    left_stripped = spaced.lstrip() # "Hello   "
-                    right_stripped = spaced.rstrip() # "   Hello"
-                    
-                    🔎 SEARCHING:
-                    text = "Python Programming"
-                    find_pro = text.find("Pro")    # 7 (index where found)
-                    count_n = text.count("n")      # 2 (count of 'n')
-                    
-                    🔀 SPLITTING & JOINING:
-                    sentence = "Python,Java,C++"
-                    languages = sentence.split(",") # ["Python", "Java", "C++"]
-                    new_sentence = "-".join(languages) # "Python-Java-C++"
-                    
-                    🔧 REPLACING:
-                    text = "I love Java"
-                    new_text = text.replace("Java", "Python") # "I love Python"
-                    """)
-                    
-                    if topic_choice != '7':
-                        topics_learned.append('4')
-                    
-                    examples_choice = get_global_examples_valid_input(f"\n🔹 Want to see examples for {current_topic}? (yes/no): ")
-                    if examples_choice == 'yes':
-                        text = "   Python Programming   "
-                        print(f"\n   text = \"{text}\"")
-                        print(f"   strip(): \"{text.strip()}\"")
-                        print(f"   upper(): \"{text.upper()}\"")
-                        print(f"   lower(): \"{text.lower()}\"")
-                        print(f"   replace('Python', 'Java'): \"{text.replace('Python', 'Java')}\"")
-                        print(f"   split(): {text.strip().split()}")
-                
-                # PART 5: String Formatting
-                if topic_choice in ['5', '7'] and (topic_choice == '7' or '5' not in topics_learned):
-                    current_topic = "String Formatting"
-                    print("\n" + "="*50)
-                    print(f"📘 PART 5: {current_topic}")
-                    print("="*50)
-                    
-                    print("""
-                    🎨 STRING FORMATTING METHODS:
-                    
-                    1️⃣ f-strings (Python 3.6+): RECOMMENDED!
-                    name = "Alice"
-                    age = 25
-                    message = f"My name is {name} and I am {age} years old."
-                    # Result: "My name is Alice and I am 25 years old."
-                    
-                    2️⃣ format() method:
-                    message = "My name is {} and I am {} years old.".format(name, age)
-                    
-                    3️⃣ % formatting (old style):
-                    message = "My name is %s and I am %d years old." % (name, age)
-                    
-                    🎯 NUMBER FORMATTING:
-                    price = 49.9999
-                    formatted = f"Price: ${price:.2f}"  # "Price: $50.00"
-                    
-                    pi = 3.1415926535
-                    formatted_pi = f"Pi: {pi:.4f}"     # "Pi: 3.1416"
-                    """)
-                    
-                    if topic_choice != '7':
-                        topics_learned.append('5')
-                    
-                    examples_choice = get_global_examples_valid_input(f"\n🔹 Want to see examples for {current_topic}? (yes/no): ")
-                    if examples_choice == 'yes':
-                        name = "Alice"
-                        age = 25
-                        price = 49.9999
-                        print(f"\n   name = \"{name}\", age = {age}, price = {price}")
-                        print(f"   f-string: f'Name: {name}, Age: {age}' = \"{f'Name: {name}, Age: {age}'}\"")
-                        print(f"   format(): 'Name: {name}, Age: {age}' = \"{'Name: {}, Age: {}'.format(name, age)}\"")
-                        print(f"   Number formatting: f'Price: ${price:.2f}' = \"{f'Price: ${price:.2f}'}\"")
-                
-                # PART 6: Common Errors & Best Practices
-                if topic_choice in ['6', '7'] and (topic_choice == '7' or '6' not in topics_learned):
-                    current_topic = "Common Errors & Best Practices"
-                    print("\n" + "="*50)
-                    print(f"📘 PART 6: {current_topic}")
-                    print("="*50)
-                    
-                    print("""
-                    ⚠️ COMMON STRING ERRORS:
-                    
-                    1️⃣ IMMUTABILITY ERROR:
-                    text = "Hello"
-                    text[0] = "J"  # ❌ ERROR! Strings are immutable
-                    
-                    Correct approach:
-                    text = "J" + text[1:]  # ✅ Creates new string "Jello"
-                    
-                    2️⃣ ESCAPE CHARACTERS:
-                    # Wrong: path = "C:\new folder"  # \n is newline!
-                    # Right: path = "C:\\new folder" or r"C:\new folder"
-                    
-                    Common escape sequences:
-                    \\n → New line
-                    \\t → Tab
-                    \\\\ → Backslash
-                    \\" → Double quote
-                    \\' → Single quote
-                    
-                    3️⃣ MIXING DATA TYPES:
-                    age = 25
-                    # Wrong: message = "I am " + age + " years old"
-                    # Right: message = "I am " + str(age) + " years old"
-                    # Better: message = f"I am {age} years old"
-                    
-                    💡 BEST PRACTICES:
-                    1. Use f-strings for formatting (Python 3.6+)
-                    2. Remember strings are IMMUTABLE
-                    3. Use .strip() to clean user input
-                    4. Prefer .join() for concatenating many strings
-                    5. Use raw strings (r"") for paths and regex
-                    """)
-                    
-                    if topic_choice != '7':
-                        topics_learned.append('6')
-                
-                # Special handling for "All topics"
+                # Handle "All topics" selection
                 if topic_choice == '7':
+                    teach_all_string_topics()
                     topics_learned = ['1', '2', '3', '4', '5', '6']
-                    print("\n" + "=" * 50)
+                    print_global_separator()
                     print("🎉 COMPLETE STRINGS GUIDE FINISHED!")
-                    print("=" * 50)
+                    print_global_separator()
                     break
                 
-                # Ask if user wants to learn another string topic
-                if topic_choice != '7' and topic_choice != '8':
-                    continue_learning = get_global_valid_input("\n🔹 Want to learn another string topic? (yes/no): ")
-                    if continue_learning == 'no':
-                        print("\n✅ Exiting strings section...")
-                        break
-        
+                # Teach individual topic based on choice
+                if topic_choice == '1':
+                    teach_string_basics()
+                    if '1' not in topics_learned:
+                        topics_learned.append('1')
+                
+                elif topic_choice == '2':
+                    teach_string_indexing()
+                    if '2' not in topics_learned:
+                        topics_learned.append('2')
+                
+                elif topic_choice == '3':
+                    teach_string_operations()
+                    if '3' not in topics_learned:
+                        topics_learned.append('3')
+                
+                elif topic_choice == '4':
+                    teach_string_methods()
+                    if '4' not in topics_learned:
+                        topics_learned.append('4')
+                
+                elif topic_choice == '5':
+                    teach_string_formatting()
+                    if '5' not in topics_learned:
+                        topics_learned.append('5')
+                
+                elif topic_choice == '6':
+                    teach_string_errors()
+                    if '6' not in topics_learned:
+                        topics_learned.append('6')
+                
+                # Ask if user wants to continue with strings
+                continue_learning = get_global_valid_input("\n🔹 Want to learn another string topic? (yes/no): ")
+                if continue_learning == 'no':
+                    print("\n✅ Exiting strings section...")
+                    break
+
+        # Now call explain_strings()
         explain_strings()
 
-        # Ask about practice only after completing strings
+        # Practice section
         practice = get_global_valid_input("\n🔹 Want to practice with a string example? (yes/no): ")
         if practice == 'yes':
-            print("\n" + "="*50)
+            print_global_separator()
             print("🧪 INTERACTIVE STRING PRACTICE")
-            print("="*50)
+            print_global_separator()
             
-            # Get user input for practice
             user_text = input("Enter a text to practice with: ").strip()
             
-            if user_text:  # Check if input is not empty
+            if user_text:
                 print(f"\n📊 ANALYSIS OF YOUR TEXT: \"{user_text}\"")
                 print(f"   Length: {len(user_text)} characters")
                 print(f"   First character: '{user_text[0]}'")
@@ -1050,7 +1244,6 @@ while True:
                     print(f"   Last 3 characters: '{user_text[-3:]}'")
                     print(f"   Middle section: '{user_text[1:-1]}'")
                 
-                # Count vowels
                 vowels = "aeiouAEIOU"
                 vowel_count = sum(1 for char in user_text if char in vowels)
                 print(f"   Vowel count: {vowel_count}")
@@ -1058,24 +1251,24 @@ while True:
                 print("\n✅ Practice complete! You've applied string operations!")
             else:
                 print("⚠️  No text entered for practice.")
-        
+
         Assistant_Response = "Excellent! You've learned comprehensive string handling in Python!"
         print(Assistant_Response)
-    
-    # Ask if user wants to learn another topic
-    print("\n" + "="*50)
-    learn_more = get_global_valid_input("\n🔹 Would you like to learn another topic? (yes/no/exit): ")
-    
-    if learn_more == 'exit':
-        print("\n👋 Goodbye! Come back whenever you need me")
-        break
-    elif learn_more == 'no':
-        break
-    # If yes, the loop continues (goes back to menu)
+
+        # Ask if user wants to learn another topic
+        print_global_separator()
+        learn_more = get_global_valid_input("\n🔹 Would you like to learn another topic? (yes/no/exit): ")
+
+        if learn_more == 'exit':
+            print("\n👋 Goodbye! Come back whenever you need me")
+            exit()
+        elif learn_more == 'no':
+            break
+        # If yes, the loop continues
 
 # ========== FINAL MESSAGE ==========
-print("\n" + "="*50)
-AI_response = "Congratulations! You've completed the Python basics tutorial 🐍 You learned what you wanted!"
-print(AI_response)
+print_global_separator()
+Assistant_Response = "Congratulations! You've completed the Python basics tutorial 🐍 You learned what you wanted!"
+print(Assistant_Response)
 print("Keep practicing to enhance your skills. 🥷")
-print("="*50)
+print_global_separator()
