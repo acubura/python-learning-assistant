@@ -1,6 +1,6 @@
 # Assistant introducing himself:
 name = "Python Teaching Assistant"
-version = "1.0.1"
+version = "1.0.2"
 category = "Preview"
 Description = "An Assistant developed to guide you with Python programming and learning."
 
@@ -10,31 +10,84 @@ def introduce():
 print(introduce())
 
 # ========== SMART INPUT VALIDATION FUNCTIONS ==========
+
+# ----- RESPONSE CATEGORIES (Constants for better readability) -----
+YES_RESPONSES = ['yes', 'y', 'teach me this topic', 'i want to learn this topic',
+                 'wanted to learn more', 'of course! Lets learn this new topic', 'yeah! Teach me man']
+
+NO_RESPONSES = ['no', 'n', 'move on to next topic', 'skip', 'skip the topic', 'I dont have plans to learn this topic',
+                'nah! I am not going to continue further', 'I am fine, dont want to learn today', 'I dont want to learn anything']
+
+EXIT_RESPONSES = ['exit', 'e', 'exit the session', 'i want to exit', 
+                  'nah! I dont want to study', 'nuh uh! No more, I am quiting', 'I am taking a relaxing break']
+
+YES_EXAMPLES_RESPONSES = ['yes', 'y', 'show me examples', 'i want to see examples', 'give me some examples',
+                          'of course! I want to see the example', 'yeah! Show me more examples', 'OK! I want to see more examples']
+
+NO_EXAMPLES_RESPONSES = ['no', 'n', 'skip examples', 'no examples', 'skip showing examples', 'skip this particular example',
+                         'nah! I dont want to see examples', 'nuh uh! I am fine without examples', 'I am good, dont show me examples']
+
+YES_QUESTION_RESPONSES = [
+    'yes', 'y', 
+    'i have a question', 'ask a question', 'i want to ask a question',
+    'can you teach', 'can you help me', 'i need help', 
+    'i wanted to ask you something', 'yeah! can you help me', 
+    'yeah! I have a question'
+]
+
+NO_QUESTION_RESPONSES = [
+    'no', 'n',
+    'no questions', 'i do not have a question', 'skip questions',
+    'no! I do not have a question', 'nah! I do not want to ask a question',
+    'nuh ! I do not have any questions', 'nuh uh! I do not want to ask anything'
+]
+
+EXIT_QUESTION_RESPONSES = [
+    'exit', 'e', 'exit the session', 'i want to exit', 'i want to leave',
+    'Nuh uh! I want to exit', 'nah! I want to exit', 'no! I want to exit',
+    'i want to leave now', 'Nah! I am fine',
+    'sorry! But I do not want to learn anything', 'i am good for now'
+]
+
+SIMPLE_RESPONSES = ['yes', 'y', 'no', 'n', 'ok', 'okay', 'exit', 'e']
+
+QUESTION_WORDS = [
+    'what', 'how', 'why', 'when', 'where', 'who', 'which', 
+    'can', 'is', 'are', 'do', 'does', 'should', 'could', 'would', 'will'
+]
+
+PYTHON_TERMS = [
+    'python', 'function', 'variable', 'hello world', 'relational operator',
+    'assignment operator', 'logical operator', 'type conversion', 'input function',
+    'comments', 'strings', 'programming', 'coding'
+]
+
+# ----- Global Input Validation Functions -----
+
 def get_global_valid_input(prompt):
     """Get and validate user input for yes/no/exit"""
-    valid_options = ['yes', 'no', 'exit', 'y', 'n', 'e',
-                     'move on to next topic', 'skip', 'skip the topic', 'exit the session',
-                     'teach me this topic', 'i want to learn this topic', 'wanted to learn this topic']
+    valid_options = YES_RESPONSES + NO_RESPONSES + EXIT_RESPONSES
+    
     while True:
         user_input = input(prompt).strip().lower()
         
-        if not user_input:  # Empty input
+        # ----- EMPTY INPUT CHECK -----
+        if not user_input:
             print("⚠️  Please enter a valid response (yes/no/exit)")
             continue
         
-        # Check for exact matches first
+        # ----- EXACT MATCHES FIRST -----
         if user_input in valid_options:
-            # Map to standard responses
-            if user_input in ['yes', 'y', 'teach me this topic', 'i want to learn this topic', 'wanted to learn this topic']:
+            if user_input in YES_RESPONSES:
                 return 'yes'
-            elif user_input in ['no', 'n', 'move on to next topic', 'skip', 'skip the topic']:
+            elif user_input in NO_RESPONSES:
                 return 'no'
-            elif user_input in ['exit', 'e', 'exit the session']:
+            elif user_input in EXIT_RESPONSES:
                 return 'exit'
             else:
                 return user_input
         
-        # Check for partial matches
+        # ----- PARTIAL MATCHES -----
         if user_input.startswith('y'):
             return 'yes'
         elif user_input.startswith('n'):
@@ -48,77 +101,28 @@ def get_global_valid_input(prompt):
         
         print("⚠️  Please enter a valid response (yes/no/exit)")
 
-def get_global_menu_choice(prompt, min_val=1, max_val=10):
-    """Get and validate user input for menu choice"""
-    while True:
-        choice = input(prompt).strip().lower()
-        
-        if choice == 'exit':
-            return 'exit'
-        
-        if not choice:
-            print(f"⚠️  Please enter a number between {min_val} and {max_val}, or 'exit'")
-            continue
-
-        if choice.isdigit() and min_val <= int(choice) <= max_val:
-            return choice
-
-        print(f"⚠️  Please enter a number between {min_val} and {max_val}, or 'exit'")
-
-def get_global_examples_valid_input(prompt):
-    """Get and validate user input for examples"""
-    while True:
-        user_input = input(prompt).strip().lower()
-        
-        if not user_input:  # Empty input
-            print("⚠️  Please enter a valid response (yes/no)")
-            continue
-        
-        # Check for yes variations
-        if user_input in ['yes', 'y', 'show me examples', 'i want to see examples']:
-            return 'yes'
-        # Check for no variations
-        elif user_input in ['no', 'n', 'skip examples', 'no examples', 'skip showing examples', 'skip the examples']:
-            return 'no'
-        # Check partial matches
-        elif user_input.startswith('y'):
-            return 'yes'
-        elif user_input.startswith('n'):
-            return 'no'
-        elif 'example' in user_input or 'show' in user_input:
-            return 'yes'
-        elif 'skip' in user_input:
-            return 'no'
-        
-        print("⚠️  Please enter a valid response (yes/no)")
+# ----- Global Question-Specific Input Validation Function -----        
 
 def get_global_user_question_valid_input(prompt):
     """Get and validate user input for questions"""
     while True:
         user_input = input(prompt).strip().lower()
         
-        if not user_input:  # Empty input
+        # ----- EMPTY INPUT CHECK -----
+        if not user_input:
             print("⚠️  Please enter a valid response (yes/no/exit)")
             continue
         
-        # Check for yes variations
-        if user_input in ['yes', 'y', 'i have a question', 'ask a question', 'i want to ask a question', 
-                          'can you teach', 'can you help me', 'i need help', 'i wanted to ask you something', 
-                          'yeah! can you help me', 'yeah! I have a question']:
+        # ----- EXACT MATCHES -----
+        if user_input in YES_QUESTION_RESPONSES:
             return 'yes'
-        # Check for no variations
-        elif user_input in ['no', 'n', 'no questions', 'i do not have a question', 'skip questions',
-                           'no! I do not have a question', 'nah! I do not want to ask a question', 
-                           'nuh ! I do not have any questions', 'nuh uh! I do not want to ask anything']:
+        elif user_input in NO_QUESTION_RESPONSES:
             return 'no'
-        # Check for exit variations
-        elif user_input in ['exit', 'e', 'exit the session', 'i want to exit', 'i want to leave', 'Nuh uh! I want to exit',
-                            'nah! I want to exit', 'no! I want to exit', 'i want to leave now', 'Nah! I am fine',
-                            'sorry! But I do not want to learn anything', 'i am good for now']:
+        elif user_input in EXIT_QUESTION_RESPONSES:
             return 'exit'
         
-        # Check partial matches
-        elif user_input.startswith('y'):
+        # ----- PARTIAL MATCHES -----
+        if user_input.startswith('y'):
             return 'yes'
         elif user_input.startswith('n'):
             return 'no'
@@ -133,86 +137,110 @@ def get_global_user_question_valid_input(prompt):
         
         print("⚠️  Please enter a valid response (yes/no/exit)")
 
+#  ----- Global Menu Choice Functions -----
+
+def get_global_menu_choice(prompt, min_val=1, max_val=10):
+    """Get and validate user input for menu choice"""
+    while True:
+        choice = input(prompt).strip().lower()
+        
+        # ----- EXIT CHECK -----
+        if choice == 'exit':
+            return 'exit'
+        
+        # ----- EMPTY INPUT CHECK -----
+        if not choice:
+            print(f"⚠️  Please enter a number between {min_val} and {max_val}, or 'exit'")
+            continue
+
+        # ----- VALID NUMBER CHECK -----
+        if choice.isdigit() and min_val <= int(choice) <= max_val:
+            return choice
+
+        print(f"⚠️  Please enter a number between {min_val} and {max_val}, or 'exit'")
+
+# ----- Global Examples-Specific Input Validation Function -----        
+
+def get_global_examples_valid_input(prompt):
+    """Get and validate user input for examples"""
+    while True:
+        user_input = input(prompt).strip().lower()
+        
+        # ----- EMPTY INPUT CHECK -----
+        if not user_input:
+            print("⚠️  Please enter a valid response (yes/no)")
+            continue
+        
+        # ----- EXACT MATCHES -----
+        if user_input in YES_EXAMPLES_RESPONSES:
+            return 'yes'
+        elif user_input in NO_EXAMPLES_RESPONSES:
+            return 'no'
+        
+        # ----- PARTIAL MATCHES -----
+        if user_input.startswith('y'):
+            return 'yes'
+        elif user_input.startswith('n'):
+            return 'no'
+        elif 'example' in user_input or 'show' in user_input:
+            return 'yes'
+        elif 'skip' in user_input:
+            return 'no'
+        
+        print("⚠️  Please enter a valid response (yes/no)")
+
+# ----- Global Question Content Validation Function -----       
+
 def get_global_question_content_input(prompt):
     """Get and validate the actual question content (not yes/no/exit)"""
+    
+    # ----- HELPER FUNCTIONS -----
+    def is_simple_response(text):
+        """Check if input is just yes/no/exit"""
+        return text in SIMPLE_RESPONSES
+    
+    def is_full_question(text):
+        """Check if input is a complete question (has enough words)"""
+        words = text.split()
+        
+        # Any question with at least 4 words is likely complete
+        # "Can you teach me?" = 4 words
+        # "How to learn Python?" = 4 words
+        # "What is a variable?" = 4 words
+        return len(words) >= 4
+    
+    def print_helpful_feedback():
+        """Print helpful examples"""
+        print("\n❌ Please ask a complete question (at least 4 words).")
+        print("\n📝 Examples:")
+        print("   • 'Can you teach me Python?'")
+        print("   • 'How do I learn variables?'")
+        print("   • 'What is a function?'")
+        print("   • 'Can you explain loops?'")
+        print()
+    
+    # ----- MAIN VALIDATION LOOP -----
     while True:
         question = input(prompt).strip()
         
-        if not question:  # Empty input
+        # ----- EMPTY INPUT CHECK -----
+        if not question:
             print("⚠️  Please enter a valid question.")
             continue
         
         question_lower = question.lower()
         
-        # Reject if it's just a yes/no response (user misunderstood)
-        if question_lower in ['yes', 'y', 'no', 'n', 'ok', 'okay', 'exit', 'e']:
+        # ----- SIMPLE RESPONSE CHECK -----
+        if is_simple_response(question_lower):
             print("⚠️  Please ask an actual Python question, not just 'yes' or 'no'.")
             continue
         
-        # Check for question indicators
-        question_words = ['what', 'how', 'why', 'when', 'where', 'who', 'which', 
-                         'can', 'is', 'are', 'do', 'does', 'should', 'could', 'would', 'will']
-        
-        has_question_mark = '?' in question
-        has_question_word = any(question_lower.startswith(word) or f" {word} " in f" {question_lower} " 
-                               for word in question_words)
-        
-        # Check for Python-related terms
-        python_terms = ['python', 'function', 'variable', 'hello world', 'relational operator',
-                        'Assignment operator', 'logical operator', 'type conversion', 'input function',
-                        'comments', 'strings', 'programming', 'coding']
-        
-        has_python_term = any(term in question_lower for term in python_terms)
-        
-        # Check for common question patterns
-        has_how_to = 'how to' in question_lower
-        has_what_is = 'what is' in question_lower or "what's" in question_lower
-        has_why_does = 'why does' in question_lower or 'why is' in question_lower
-        has_can_you = 'can you' in question_lower
-        has_difference = 'difference between' in question_lower
-        has_example = 'example' in question_lower or 'sample' in question_lower
-        
-        has_question_pattern = any([has_how_to, has_what_is, has_why_does, 
-                                   has_can_you, has_difference, has_example])
-        
-        # Check if it's likely real words (has vowels)
-        words = question_lower.split()
-        if words:
-            real_word_count = 0
-            for word in words:
-                if any(vowel in word for vowel in 'aeiou'):
-                    real_word_count += 1
-            has_real_words = real_word_count >= len(words) // 2
-        else:
-            has_real_words = False
-        
-        # Final validation
-        is_proper_question = (
-            (has_question_mark or has_question_word or has_question_pattern) and
-            (has_python_term or has_question_pattern) and
-            has_real_words and
-            len(question) >= 5
-        )
-        
-        if is_proper_question:
+        # ----- CHECK IF IT'S A FULL QUESTION -----
+        if is_full_question(question):
             return question
         
-        # Helpful feedback
-        print("\n❌ That doesn't look like a proper Python question.")
-        if not (has_question_mark or has_question_word or has_question_pattern):
-            print("   • Start with: What, How, Why, Can you, etc.")
-        elif not has_python_term:
-            print("   • Include a Python term (function, variable, loop, etc.)")
-        elif not has_real_words:
-            print("   • Use real words in your question")
-        elif len(question) < 5:
-            print("   • Question is too short")
-        
-        print("\n📝 Examples:")
-        print("   • 'How do I create a function in Python?'")
-        print("   • 'What is a variable?'")
-        print("   • 'Can you explain loops?'")
-        print()
+        # ----- HELPFUL FEEDBACK -----
+        print_helpful_feedback()
 
 # ========== Global Seperator for better readability ==========
 def print_global_separator():
