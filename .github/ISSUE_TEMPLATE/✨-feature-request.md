@@ -1,20 +1,33 @@
 ---
-name: "✨ Feature request"
-about: Suggest an idea for the project
-title: ''
+name: "✨ Feature Request"
+about: Suggest an idea for this project
+title: "Features & Enchancement 💫 "
 labels: enhancement
-assignees: ''
+---
+
+## 🎯 What Problem Does This Solve?
+
+A clear and simple description of the problem.  
+Ex: I'm always frustrated when [...]
+
+## 💡 Your Ideal Solution
+
+A clear description of what you want to happen.
+
+## 🔄 Alternatives You've Considered
+
+Any other solutions or approaches you thought about.
+
+## 📸 Screenshots or Examples (if helpful)
+
+Drag and drop any mockups, sketches, or examples here.
+
+## 📝 Additional Context
+
+Anything else you want to add?
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex: I'm always frustrated when [...]
+### ✅ Code of Conduct
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
-
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
-
-**Additional context**
-Add any other context, screenshots, or examples about the feature request here.
+- [ ] I have read and agree to follow the project's Code of Conduct
