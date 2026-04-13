@@ -78,6 +78,8 @@ Fixed an issue where the assistant was accepting incomplete or fragment question
 - **After:** Now properly requires **complete questions with at least 4 words**
 - ✅ Now accepts: `"Can you teach me Python?"`, `"How do I learn variables?"`, `"What is a function?"`
 - ❌ Rejects: `"Can you teach"`, `"How to"`, `"What is"`
+- Fix the "How to Run" commands
+- Remove the duplicated code from the source code
 
 This ensures users ask full, meaningful questions before the assistant responds.
 
@@ -118,12 +120,12 @@ The **Strings** section is a complete mini-course inside the assistant. It cover
 
 **1️⃣ Clone the repository**
 ```bash
-git clone https://github.com/acubura/python-learning-ai-assistant.git
+git clone https://github.com/acubura/python-learning-assistant.git
 ```
 
 **2️⃣ Open the project folder**
 ```bash
-cd python-learning-ai-assistant
+cd python-learning-assistant
 ```
 
 **3️⃣ Run the program**
