@@ -1,31 +1,45 @@
 ---
-name: "\U0001F41B Bug Report"
-about: Create a report to help us improve
-title: ''
+name: "🐛 Bug Report"
+about: Report something that's not working right
+title: "[BUG]: "
 labels: bug
 assignees: ''
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+## 🐞 What's the Problem?
 
-**To Reproduce**
-Steps to reproduce the behavior:
+A clear and simple description of what went wrong.
+
+## 🔁 Steps to Reproduce
+
+Steps to make the bug happen:
+
 1. Go to '...'
 2. Click on '...'
-3. Scroll down to '...'
-4. See error
+3. Scroll to '...'
+4. See the error
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+## 🤔 What Should Happen?
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+A clear description of what you expected instead.
 
-**Environment (please complete):**
-- Python Version: [e.g., 3.11]
-- OS: [e.g., Windows 11]
+## 📸 Screenshots (if helpful)
 
-**Additional context**
-Add any other context about the problem here.
+Drag and drop screenshots here.
+
+## 💻 Your Environment
+
+- **Python Version:** (e.g., 3.11, 3.12)
+- **OS:** (e.g., Windows 11, macOS, Ubuntu)
+- **Browser (if web-related):** (e.g., Chrome, Firefox)
+
+## 📝 Anything Else?
+
+Add any other context, error messages, or notes here.
+
+---
+
+### ✅ Code of Conduct
+
+- [ ] I have read and agree to follow the project's Code of Conduct
