@@ -1,10 +1,8 @@
 ---
 name: "🐛 Bug Report"
 about: Report something that's not working right
-title: "[BUG]: "
+title: " Bugs 🐞 "
 labels: bug
-assignees: ''
-
 ---
 
 ## 🐞 What's the Problem?
