@@ -1,6 +1,20 @@
+# HEADER COMMENT
+
+"""
+PYTHON TEACHING ASSISTANT
+Created by: M Qasim Farooqi
+Role: BS IT Student | Python Developer · AI Prompt Strategist · Digital Creator | I build, analyze & create
+Version: 1.0.3
+Category: Preview
+Purpose: Learn Python basics through interactive teaching with 12 comprehensive topics
+
+"""
+
+# ========== SECTION 1: INTRO & SETUP ==========
+
 # Assistant introducing himself:
 name = "Python Teaching Assistant"
-version = "1.0.2"
+version = "1.0.3"
 category = "Preview"
 Description = "An Assistant developed to guide you with Python programming and learning."
 
@@ -13,19 +27,24 @@ print(introduce())
 
 # ----- RESPONSE CATEGORIES (Constants for better readability) -----
 YES_RESPONSES = ['yes', 'y', 'teach me this topic', 'i want to learn this topic',
-                 'wanted to learn more', 'of course! Lets learn this new topic', 'yeah! Teach me man']
+                 'wanted to learn more', 'of course! Lets learn this new topic', 'yeah! Teach me man', 'fr! Let\'s do it!',
+                 'ngl! I am excited to learn this topic', 'tbh! I want to learn this topic', 'lock in bro! I want to learn']
 
 NO_RESPONSES = ['no', 'n', 'move on to next topic', 'skip', 'skip the topic', 'I dont have plans to learn this topic',
-                'nah! I am not going to continue further', 'I am fine, dont want to learn today', 'I dont want to learn anything']
+                'nah! I am not going to continue further', 'I am fine, dont want to learn today', 'I dont want to learn anything',
+                'nuh uh! I am good for now', 'I\'ll pass', 'no way! I dont want to learn', 'Not on my watch today! no learning today']
 
-EXIT_RESPONSES = ['exit', 'e', 'exit the session', 'i want to exit', 
-                  'nah! I dont want to study', 'nuh uh! No more, I am quiting', 'I am taking a relaxing break']
+EXIT_RESPONSES = ['exit', 'e', 'exit the session', 'i want to exit', 'nah! I dont want to study', 'nuh uh! No more, I am quiting', 
+                  'I am taking a relaxing break', 'dipping out for now', 'clear out for today! No learning',
+                  'I\'m gonna bounce, so bye for now', 'sorry! But I do not want to learn anything', 'I am out right now, maybe later']
 
-YES_EXAMPLES_RESPONSES = ['yes', 'y', 'show me examples', 'i want to see examples', 'give me some examples',
-                          'of course! I want to see the example', 'yeah! Show me more examples', 'OK! I want to see more examples']
+YES_EXAMPLES_RESPONSES = ['yes', 'y', 'show me examples', 'i want to see examples', 'give me some examples','of course! I want to see the example',
+                          'yeah! Show me more examples', 'OK! I want to see more examples', 'yup! show me some examples!',
+                          'fr! I want to see examples', 'ngl! I am excited to see examples', 'tbh! I want to see examples']
 
 NO_EXAMPLES_RESPONSES = ['no', 'n', 'skip examples', 'no examples', 'skip showing examples', 'skip this particular example',
-                         'nah! I dont want to see examples', 'nuh uh! I am fine without examples', 'I am good, dont show me examples']
+                         'nah! I dont want to see examples', 'nuh uh! I am fine without examples', 'I am good, dont show me examples',
+                         'bruh! I dont want to see examples', 'I am straight, nuh uh! I am good without examples', 'I am good, nah!']
 
 YES_QUESTION_RESPONSES = [
     'yes', 'y', 
@@ -59,7 +78,9 @@ QUESTION_WORDS = [
 PYTHON_TERMS = [
     'python', 'function', 'variable', 'hello world', 'relational operator',
     'assignment operator', 'logical operator', 'type conversion', 'input function',
-    'comments', 'strings', 'programming', 'coding'
+    'comments', 'strings', 'programming', 'coding', 'data types', 'conditional statements',
+    'if statement', 'else statement', 'elif statement', 'nested conditionals', 'Indexing & Slicing',
+    'Strings Operations', 'Strings Formating'
 ]
 
 # ----- Global Input Validation Functions -----
@@ -139,7 +160,7 @@ def get_global_user_question_valid_input(prompt):
 
 #  ----- Global Menu Choice Functions -----
 
-def get_global_menu_choice(prompt, min_val=1, max_val=10):
+def get_global_menu_choice(prompt, min_val=1, max_val=12):
     """Get and validate user input for menu choice"""
     while True:
         choice = input(prompt).strip().lower()
@@ -204,9 +225,6 @@ def get_global_question_content_input(prompt):
         words = text.split()
         
         # Any question with at least 4 words is likely complete
-        # "Can you teach me?" = 4 words
-        # "How to learn Python?" = 4 words
-        # "What is a variable?" = 4 words
         return len(words) >= 4
     
     def print_helpful_feedback():
@@ -242,12 +260,17 @@ def get_global_question_content_input(prompt):
         # ----- HELPFUL FEEDBACK -----
         print_helpful_feedback()
 
-# ========== Global Seperator for better readability ==========
+# ========== SECTION 2: HELPER FUNCTIONS FOR INPUT VALIDATION & CODE READABILITY ==========
+
+# Global Seperator Function
 def print_global_separator():
     global_separator = "\n" + "="*50
     print(global_separator)
 
-# ========== START OF THE CONVERSATION ==========
+
+# ========== SECTION 3: MAIN PROGRAM & USER QUESTIONS ==========
+
+# Start of the conservation
 print("\nHow can I assist you with Python programming today?")
 
 # Ask if user has a specific question
@@ -302,14 +325,16 @@ while True:
                          "7. Type conversion\n" \
                          "8. Input function\n" \
                          "9. Comments in Python\n" \
-                         "10. Strings in Python\n"
+                         "10. Strings in Python\n" \
+                         "11. Data types in Python\n" \
+                         "12. Conditional statements\n"
 
     print(Assistant_Response)
     print_global_separator()
 
     # Get topic choice
-    Assistant_Ask = "\n🔹 Which topic would you like to start with? (1-10/exit): "
-    topic_choice = get_global_menu_choice(Assistant_Ask, 1, 10)
+    Assistant_Ask = "\n🔹 Which topic would you like to start with? (1-12/exit): "
+    topic_choice = get_global_menu_choice(Assistant_Ask, 1, 12)
 
     if topic_choice == 'exit':
         print("\n👋 Ok, goodbye! No class today, come back whenever you need me")
@@ -326,7 +351,9 @@ while True:
         '7': 'Type conversion',
         '8': 'Input function',
         '9': 'Comments in Python',
-        '10': 'Strings in Python'
+        '10': 'Strings in Python',
+        '11': 'Data types in Python',
+        '12': 'Conditional statements'
     }
 
     selected_topic = topics[topic_choice]
@@ -344,6 +371,8 @@ while True:
         continue
     
     print(f"\n📖 Teaching {selected_topic}...")
+
+    # ========== SECTION 4: TOPICS 1-6 ==========
     
     # TEACH THE SELECTED TOPIC BASED ON USER'S CHOICE
     if selected_topic == 'Hello World':
@@ -395,6 +424,26 @@ while True:
             print_global_separator()
         
         explain_hello_world()
+        
+        # Practice section
+        practice = get_global_valid_input("\n🔹 Want to practice with Hello World? (yes/no): ")
+        if practice == 'yes':
+            print_global_separator()
+            print("🧪 INTERACTIVE HELLO WORLD PRACTICE")
+            print_global_separator()
+            
+            user_name = input("Enter your name to greet: ").strip()
+            
+            if user_name:
+                print(f"\n📊 YOUR CUSTOM GREETING:")
+                print(f"   print(\"Hello, {user_name}!\")")
+                print(f"   Output: Hello, {user_name}!")
+                print(f"\n   You can also try:")
+                print(f"   print('Welcome to Python, {user_name}!')")
+                print(f"   print(f'Hi {{user_name}}, let\\'s learn Python!')")
+                print("\n✅ Practice complete! You've created your first custom print statement!")
+            else:
+                print("⚠️  No name entered for practice.")
         
         Assistant_Response = "Awesome! You've learned how to print text in Python."
         print(Assistant_Response)
@@ -450,6 +499,29 @@ while True:
                 print("Skipping example...")
         
         explain_functions()
+        
+        # Practice section
+        practice = get_global_valid_input("\n🔹 Want to practice with functions? (yes/no): ")
+        if practice == 'yes':
+            print_global_separator()
+            print("🧪 INTERACTIVE FUNCTIONS PRACTICE")
+            print_global_separator()
+            
+            user_input = input("Enter a skill you want to learn (e.g., Python, Coding): ").strip()
+            
+            if user_input:
+                print(f"\n📊 FUNCTION ANALYSIS FOR: {user_input}")
+                print(f"   # Function definition")
+                print(f"   def learn_{user_input.lower()}():")
+                print(f"       print('Learning {user_input} is fun!')")
+                print(f"       return 'I mastered {user_input}!'")
+                print(f"\n   # Using the function")
+                print(f"   learn_{user_input.lower()}()")
+                print(f"   result = learn_{user_input.lower()}()")
+                print(f"   print(result)")
+                print("\n✅ Practice complete! You've created a custom function!")
+            else:
+                print("⚠️  No skill entered for practice.")
         
         Assistant_Response = "Awesome! You've learned about functions and how to create and use them."
         print(Assistant_Response)
@@ -509,6 +581,36 @@ while True:
         
         explain_variables()
         
+        # Practice section
+        practice = get_global_valid_input("\n🔹 Want to practice with variables? (yes/no): ")
+        if practice == 'yes':
+            print_global_separator()
+            print("🧪 INTERACTIVE VARIABLES PRACTICE")
+            print_global_separator()
+            
+            print("Let's create variables with your information!")
+            user_name = input("Enter your name: ").strip()
+            user_age = input("Enter your age: ").strip()
+            user_hobby = input("Enter your hobby: ").strip()
+            
+            if user_name and user_age and user_hobby:
+                print(f"\n📊 VARIABLE ANALYSIS FOR: {user_name}")
+                print(f"   name = '{user_name}'           # String variable")
+                print(f"   age = {user_age}                # Integer variable")
+                print(f"   hobby = '{user_hobby}'         # String variable")
+                print(f"   is_student = True               # Boolean variable")
+                print(f"\n   # Using your variables:")
+                print(f"   print(f'My name is {{name}}')")
+                print(f"   print(f'I am {{age}} years old')")
+                print(f"   print(f'I love {{hobby}}')")
+                print(f"\n   # Type checking:")
+                print(f"   print(type(name))   # <class 'str'>")
+                print(f"   print(type(age))    # <class 'str'> (input always returns string)")
+                print(f"   # To use age as number: age = int('{user_age}')")
+                print("\n✅ Practice complete! You've created and used variables!")
+            else:
+                print("⚠️  Missing information for practice.")
+        
         Assistant_Response = "Great job! You've learned about variables and their types."
         print(Assistant_Response)
     
@@ -563,15 +665,47 @@ while True:
             print_global_separator()
             print("EVERY 'IF' DECISION USES THESE OPERATORS!")
             print_global_separator()
-            
-            print_global_separator()
-            Assistant_Response = "Of course! Relational operators compare two values and return True or False based on the comparison."
-            print(Assistant_Response)
-            print("\n   💡 Explanation:")
-            print("   - Relational operators compare two values")
-            print("   - Useful in decision-making and control flow")
         
         explain_relational_operators()
+        
+        # Practice section
+        practice = get_global_valid_input("\n🔹 Want to practice with relational operators? (yes/no): ")
+        if practice == 'yes':
+            print_global_separator()
+            print("🧪 INTERACTIVE RELATIONAL OPERATORS PRACTICE")
+            print_global_separator()
+            
+            num1 = input("Enter first number: ").strip()
+            num2 = input("Enter second number: ").strip()
+            
+            if num1 and num2:
+                try:
+                    a = float(num1)
+                    b = float(num2)
+                    
+                    print(f"\n📊 COMPARING {a} AND {b}:")
+                    print(f"   {a} == {b}  → {a == b}   (Equal to)")
+                    print(f"   {a} != {b}  → {a != b}   (Not equal to)")
+                    print(f"   {a} >  {b}  → {a > b}    (Greater than)")
+                    print(f"   {a} <  {b}  → {a < b}    (Less than)")
+                    print(f"   {a} >= {b}  → {a >= b}   (Greater than or equal)")
+                    print(f"   {a} <= {b}  → {a <= b}   (Less than or equal)")
+                    
+                    if a > b:
+                        print(f"\n   💡 {a} is GREATER than {b}")
+                    elif a < b:
+                        print(f"\n   💡 {a} is LESS than {b}")
+                    else:
+                        print(f"\n   💡 {a} is EQUAL to {b}")
+                    
+                    print("\n✅ Practice complete! You've used relational operators!")
+                except ValueError:
+                    print("⚠️  Please enter valid numbers next time!")
+            else:
+                print("⚠️  No numbers entered for practice.")
+        
+        Assistant_Response = "Great! You've learned about relational operators and how to compare values."
+        print(Assistant_Response)
     
     elif selected_topic == 'Assignment operators':
         # ========= TOPIC 5: Assignment Operators ==========
@@ -614,7 +748,40 @@ while True:
         
         explain_assignment_operators()
         
-        print("\nGreat! You learned about assignment operators!")
+        # Practice section
+        practice = get_global_valid_input("\n🔹 Want to practice with assignment operators? (yes/no): ")
+        if practice == 'yes':
+            print_global_separator()
+            print("🧪 INTERACTIVE ASSIGNMENT OPERATORS PRACTICE")
+            print_global_separator()
+            
+            start_value = input("Enter a starting number: ").strip()
+            
+            if start_value:
+                try:
+                    x = float(start_value)
+                    
+                    print(f"\n📊 STARTING WITH x = {x}")
+                    print(f"\n   Operation    |  Code        |  Result")
+                    print(f"   {x} + 5        |  x += 5      |  {x + 5}")
+                    print(f"   {x} - 3        |  x -= 3      |  {x - 3}")
+                    print(f"   {x} * 2        |  x *= 2      |  {x * 2}")
+                    print(f"   {x} / 4        |  x /= 4      |  {x / 4}")
+                    print(f"   {x} ** 2       |  x **= 2     |  {x ** 2}")
+                    
+                    print(f"\n   # Example with multiple operations:")
+                    print(f"   x = {x}")
+                    print(f"   x += 5   # x = {x} + 5 = {x + 5}")
+                    print(f"   x *= 2   # x = {x + 5} * 2 = {(x + 5) * 2}")
+                    
+                    print("\n✅ Practice complete! You've used assignment operators!")
+                except ValueError:
+                    print("⚠️  Please enter a valid number next time!")
+            else:
+                print("⚠️  No number entered for practice.")
+        
+        Assistant_Response = "Great! You learned about assignment operators!"
+        print(Assistant_Response)
     
     elif selected_topic == 'Logical operators':
         # ========= TOPIC 6: LOGICAL OPERATORS ==========
@@ -660,8 +827,52 @@ while True:
         
         explain_logical_operators()
         
+        # Practice section
+        practice = get_global_valid_input("\n🔹 Want to practice with logical operators? (yes/no): ")
+        if practice == 'yes':
+            print_global_separator()
+            print("🧪 INTERACTIVE LOGICAL OPERATORS PRACTICE")
+            print_global_separator()
+            
+            print("Answer these questions with True/False:")
+            has_license = input("Do you have a driver's license? (yes/no): ").strip().lower()
+            has_car = input("Do you own a car? (yes/no): ").strip().lower()
+            age = input("Enter your age: ").strip()
+            
+            if has_license and has_car and age:
+                license_bool = has_license in ['yes', 'y', 'true']
+                car_bool = has_car in ['yes', 'y', 'true']
+                
+                try:
+                    user_age = int(age)
+                    
+                    print(f"\n📊 LOGICAL ANALYSIS:")
+                    print(f"   has_license = {license_bool}")
+                    print(f"   has_car = {car_bool}")
+                    print(f"   age = {user_age}")
+                    print(f"   age >= 18 = {user_age >= 18}")
+                    
+                    print(f"\n   🔧 LOGICAL OPERATOR RESULTS:")
+                    print(f"   has_license and has_car = {license_bool and car_bool}  (Both true?)")
+                    print(f"   has_license or has_car = {license_bool or car_bool}   (At least one true?)")
+                    print(f"   not has_license = {not license_bool}           (Opposite of license)")
+                    
+                    can_drive = (user_age >= 18) and license_bool
+                    print(f"\n   Can drive? (age >= 18 and has_license) = {can_drive}")
+                    
+                    can_borrow = (user_age >= 18) and car_bool
+                    print(f"   Can borrow car? (age >= 18 and has_car) = {can_borrow}")
+                    
+                    print("\n✅ Practice complete! You've used logical operators!")
+                except ValueError:
+                    print("⚠️  Please enter a valid age number next time!")
+            else:
+                print("⚠️  Missing information for practice.")
+        
         Assistant_Response = "Great! You learned about logical operators!"
         print(Assistant_Response)
+
+        # ========== SECTION 5: TOPICS 7-12 ==========
     
     elif selected_topic == 'Type conversion':
         # ==== TOPIC 7: TYPE CONVERSION ===========
@@ -727,6 +938,46 @@ while True:
         
         explain_type_conversion()
         
+        # Practice section
+        practice = get_global_valid_input("\n🔹 Want to practice with type conversion? (yes/no): ")
+        if practice == 'yes':
+            print_global_separator()
+            print("🧪 INTERACTIVE TYPE CONVERSION PRACTICE")
+            print_global_separator()
+            
+            user_input = input("Enter a number (can be integer or decimal): ").strip()
+            
+            if user_input:
+                print(f"\n📊 TYPE CONVERSION ANALYSIS FOR: '{user_input}'")
+                print(f"   Original type: {type(user_input).__name__}")
+                
+                try:
+                    # Convert to different types
+                    to_int = int(float(user_input))
+                    to_float = float(user_input)
+                    to_str = str(user_input)
+                    to_bool = bool(user_input)
+                    
+                    print(f"\n   🔧 CONVERSION RESULTS:")
+                    print(f"   int()   → {to_int}     (Type: {type(to_int).__name__})")
+                    print(f"   float() → {to_float}   (Type: {type(to_float).__name__})")
+                    print(f"   str()   → '{to_str}'   (Type: {type(to_str).__name__})")
+                    print(f"   bool()  → {to_bool}    (Type: {type(to_bool).__name__})")
+                    
+                    print(f"\n   💡 PRACTICAL EXAMPLES:")
+                    print(f"   '{user_input}' + '5' = '{user_input}5' (String concatenation)")
+                    print(f"   {to_float} + 5 = {to_float + 5} (Numeric addition)")
+                    
+                    if '.' in user_input:
+                        print(f"\n   ⚠️  Note: int('{user_input}') would cause an error!")
+                        print(f"   Always use float() first: int(float('{user_input}')) = {to_int}")
+                    
+                    print("\n✅ Practice complete! You've converted data types!")
+                except ValueError:
+                    print("⚠️  Cannot convert to number! Please enter a valid number next time!")
+            else:
+                print("⚠️  No input entered for practice.")
+        
         Assistant_Response = "Great! You learned about type conversion!"
         print(Assistant_Response)
     
@@ -775,6 +1026,43 @@ while True:
         
         explain_input_function()
         
+        # Practice section
+        practice = get_global_valid_input("\n🔹 Want to practice with input function? (yes/no): ")
+        if practice == 'yes':
+            print_global_separator()
+            print("🧪 INTERACTIVE INPUT FUNCTION PRACTICE")
+            print_global_separator()
+            
+            print("Let's create an interactive program!")
+            fav_color = input("What's your favorite color? ").strip()
+            fav_number = input("What's your favorite number? ").strip()
+            
+            if fav_color and fav_number:
+                print(f"\n📊 YOUR INTERACTIVE PROGRAM:")
+                print(f"   # Get user input")
+                print(f"   color = input('What\\'s your favorite color? ')")
+                print(f"   number = input('What\\'s your favorite number? ')\n")
+                
+                print(f"   # Your inputs:")
+                print(f"   color = '{fav_color}'")
+                print(f"   number = '{fav_number}'\n")
+                
+                print(f"   # Using the inputs:")
+                print(f"   print(f'Your favorite color is {{color}}')")
+                print(f"   print(f'Your favorite number is {{number}}')\n")
+                
+                try:
+                    num_int = int(fav_number)
+                    print(f"   # Converting to number for calculations:")
+                    print(f"   number_int = int('{fav_number}')  # {num_int}")
+                    print(f"   doubled = number_int * 2          # {num_int * 2}")
+                except ValueError:
+                    print(f"   # To use '{fav_number}' as number: int('{fav_number}') would need a valid integer")
+                
+                print("\n✅ Practice complete! You've used the input function!")
+            else:
+                print("⚠️  Missing information for practice.")
+        
         Assistant_Response = "Great! You learned about the input function!"
         print(Assistant_Response)
     
@@ -821,7 +1109,42 @@ while True:
             print_global_separator()
         
         explain_comments()
-
+        
+        # Practice section
+        practice = get_global_valid_input("\n🔹 Want to practice with comments? (yes/no): ")
+        if practice == 'yes':
+            print_global_separator()
+            print("🧪 INTERACTIVE COMMENTS PRACTICE")
+            print_global_separator()
+            
+            user_explanation = input("Explain what you learned about comments in your own words: ").strip()
+            
+            if user_explanation:
+                print(f"\n📊 YOUR CODE WITH COMMENTS:")
+                print(f"\n   # {user_explanation}")
+                print(f"   # This is a single-line comment explaining the code")
+                print(f"   \n   '''")
+                print(f"   This is a multi-line comment")
+                print(f"   It can span multiple lines")
+                print(f"   Useful for longer explanations")
+                print(f"   '''")
+                print(f"   \n   print('Comments make code readable!')  # Inline comment")
+                
+                print(f"\n   💡 COMMENT TYPES YOU USED:")
+                print(f"   • Single-line comment: # {user_explanation[:50]}...")
+                print(f"   • Multi-line comment: ''' ... '''")
+                print(f"   • Inline comment: after code on same line")
+                
+                print(f"\n   🔑 WHY COMMENTS ARE IMPORTANT:")
+                print(f"   • Explain complex logic")
+                print(f"   • Help other developers understand your code")
+                print(f"   • Remind yourself what the code does")
+                print(f"   • Temporarily disable code for debugging")
+                
+                print("\n✅ Practice complete! You've learned to write comments!")
+            else:
+                print("⚠️  No explanation entered for practice.")
+        
         Assistant_Response = "Great! You learned about comments!"
         print(Assistant_Response)
     
@@ -1183,21 +1506,688 @@ while True:
                 print("\n✅ Practice complete! You've applied string operations!")
             else:
                 print("⚠️  No text entered for practice.")
-
+        
         Assistant_Response = "Excellent! You've learned comprehensive string handling in Python!"
         print(Assistant_Response)
 
-        # Ask if user wants to learn another topic
+    elif selected_topic == 'Data types in Python':
+        # ========== TOPIC 11: DATA TYPES IN PYTHON ==========
         print_global_separator()
-        learn_more = get_global_valid_input("\n🔹 Would you like to learn another topic? (yes/no/exit): ")
+        print("11. Data Types in Python:")
+        
+        def explain_data_types():
+            print("\n   📊 What are data types?")
+            print("\n📊 DATA TYPES: CATEGORIES OF VALUES")
+            print_global_separator()
+            
+            print("""
+            🎯 WHAT ARE THEY?
+            Data types classify the kind of value a variable holds.
+            They determine what operations can be performed on that value.
+            
+            🔧 COMMON DATA TYPES:
+            1️⃣ int     → Integer numbers (e.g., 42, -5, 0)
+            2️⃣ float   → Decimal numbers (e.g., 3.14, -0.001, 2.0)
+            3️⃣ str     → Text/strings (e.g., "Hello", 'Python', "123")
+            4️⃣ bool    → Boolean values (True or False)
+            5️⃣ list    → Collection of items (e.g., [1, 2, 3])
+            6️⃣ tuple   → Immutable collection (e.g., (1, 2, 3))
+            7️⃣ dict    → Key-value pairs (e.g., {"name": "Alice"})
+            
+            💡 EXAMPLES:
+            age = 30              # int
+            price = 19.99         # float
+            name = "Alice"        # str
+            is_student = True     # bool
+            scores = [85, 90, 78] # list
+            colors = ("red", "blue") # tuple
+            person = {"name": "Bob", "age": 25} # dict
+            
+            🔑 KEY POINTS:
+            • Use type() to check data type
+            • Different types support different operations
+            • Strings and numbers cannot be directly added
+            • Lists are mutable (can change), tuples are immutable
+            """)
+            
+            examples_choice = get_global_examples_valid_input("\n🔹 Want to see examples of data types? (yes/no): ")
+            if examples_choice == 'yes':
+                age = 30
+                price = 19.99
+                name = "Alice"
+                is_student = True
+                scores = [85, 90, 78]
+                print(f"\n   age = {age} (Type: {type(age).__name__})")
+                print(f"   price = {price} (Type: {type(price).__name__})")
+                print(f"   name = \"{name}\" (Type: {type(name).__name__})")
+                print(f"   is_student = {is_student} (Type: {type(is_student).__name__})")
+                print(f"   scores = {scores} (Type: {type(scores).__name__})")
+        
+        explain_data_types()
+        
+        # Practice section
+        practice = get_global_valid_input("\n🔹 Want to practice with data types? (yes/no): ")
+        if practice == 'yes':
+            print_global_separator()
+            print("🧪 INTERACTIVE DATA TYPES PRACTICE")
+            print_global_separator()
+            
+            user_input = input("Enter a value to analyze its data type: ").strip()
+            
+            if user_input:
+                print(f"\n📊 DATA TYPE ANALYSIS FOR: '{user_input}'")
+                print(f"   Original value: {user_input}")
+                print(f"   Data type: {type(user_input).__name__}")
+                
+                # Try to detect if it can be converted
+                print(f"\n   🔧 TYPE DETECTION:")
+                if user_input.isdigit():
+                    print(f"   ✓ Can be converted to int: {int(user_input)}")
+                    print(f"   ✓ Can be converted to float: {float(user_input)}")
+                elif user_input.replace('.', '', 1).isdigit() and user_input.count('.') <= 1:
+                    try:
+                        float_val = float(user_input)
+                        print(f"   ✓ Can be converted to float: {float_val}")
+                        print(f"   ✓ Can be converted to int: {int(float_val)}")
+                    except:
+                        print(f"   ✗ Cannot convert to number")
+                elif user_input.lower() in ['true', 'false']:
+                    print(f"   ✓ Can be converted to bool: {user_input.lower() == 'true'}")
+                else:
+                    print(f"   → String value (text)")
+                    print(f"   → Length: {len(user_input)} characters")
+                
+                print(f"\n   💡 PRACTICAL EXAMPLES:")
+                print(f"   type('{user_input}') → {type(user_input).__name__}")
+                
+                print("\n✅ Practice complete! You've learned about data types!")
+            else:
+                print("⚠️  No input entered for practice.")
+        
+        Assistant_Response = "Great! You've learned about different data types in Python!"
+        print(Assistant_Response)
 
-        if learn_more == 'exit':
-            print("\n👋 Goodbye! Come back whenever you need me")
-            exit()
-        elif learn_more == 'no':
-            break
-        # If yes, the loop continues
+    elif selected_topic == 'Conditional statements':
+        # ========== TOPIC 12: CONDITIONAL STATEMENTS ==========
+        print_global_separator()
+        print("12. Conditional Statements in Python:")
+ 
+        def teach_conditionals_basics():
+            """Teach conditional statements basics"""
+            print_global_separator()
+            print("📘 PART 1: IF Statements - The Basics")
+            print_global_separator()
+ 
+            print("""
+        🤔 WHAT ARE CONDITIONAL STATEMENTS?
+        Conditional statements are Python's DECISION-MAKERS! They allow
+        your program to choose different paths based on conditions.
+        
+        🎯 THE 'if' STATEMENT (The Gatekeeper):
+        syntax:
+        if condition:
+            # Code block executes ONLY if condition is True
+            
+        💡 EXAMPLE:
+        temperature = 30
+        
+        if temperature > 25:
+            print("It's hot outside!")
+        # Output: "It's hot outside!" (since 30 > 25)
+        
+        🔑 KEY POINTS:
+        • Conditions evaluate to True or False
+        • Indentation (4 spaces) is MANDATORY
+        • Code runs ONLY when condition is True
+        • Think of it as: "IF this is true, THEN do this"
+        """)
+ 
+            examples_choice = get_global_examples_valid_input("\n🔹 Want to see more if examples? (yes/no): ")
+            if examples_choice == 'yes':
+                print("\n📝 IF STATEMENT EXAMPLES:")
+                print("   # Check if user is old enough to drive")
+                print("   age = 18")
+                print("   if age >= 16:")
+                print("       print('You can get a driver\\'s license!')")
+                print("   # Output: You can get a driver's license!")
+                print()
+                print("   # Check if a number is positive")
+                print("   number = 5")
+                print("   if number > 0:")
+                print("       print(f'{number} is positive')")
+                print("   # Output: 5 is positive")
+ 
+        def teach_if_else():
+            """Teach if-else statements"""
+            print_global_separator()
+            print("📘 PART 2: If-Else Statements - Two Paths")
+            print_global_separator()
+            
+            print("""
+        🎯 THE 'if-else' STATEMENT (The Fork in the Road):
+        syntax:
+        if condition:
+            # Code block if condition is True
+        else:
+            # Code block if condition is False
+        
+        💡 REAL-LIFE ANALOGY:
+        Like a coin flip: HEADS → do this, TAILS → do that!
+        
+        🔧 EXAMPLE:
+        password = "python123"
+        
+        if password == "python123":
+            print("Access granted! ✅")
+        else:
+            print("Access denied! ❌")
+        
+        🎮 PRACTICAL USE:
+        # Check voting eligibility
+        age = 17
+        
+        if age >= 18:
+            print("You can vote in elections!")
+        else:
+            print(f"Wait {18 - age} more years to vote.")
+        """)
+            
+            examples_choice = get_global_examples_valid_input("\n🔹 Want to see if-else examples? (yes/no): ")
+            if examples_choice == 'yes':
+                print("\n📝 IF-ELSE EXAMPLES:")
+                print("   # Check if number is even or odd")
+                print("   num = 7")
+                print("   if num % 2 == 0:")
+                print("       print(f'{num} is even')")
+                print("   else:")
+                print("       print(f'{num} is odd')")
+                print("   # Output: 7 is odd")
+                print()
+                print("   # Temperature check")
+                print("   temp = 15")
+                print("   if temp > 20:")
+                print("       print('Wear shorts! 🩳')")
+                print("   else:")
+                print("       print('Wear a jacket! 🧥')")
+                print("   # Output: Wear a jacket! 🧥")
+ 
+        def teach_elif():
+            """Teach elif statements"""
+            print_global_separator()
+            print("📘 PART 3: Elif Statements - Multiple Paths")
+            print_global_separator()
+            
+            print("""
+        🎯 THE 'if-elif-else' STATEMENT (The Menu):
+        syntax:
+        if condition1:
+            # Code for condition1
+        elif condition2:
+            # Code for condition2
+        elif condition3:
+            # Code for condition3
+        else:
+            # Code if none are True
+        
+        💡 REAL-LIFE ANALOGY:
+        Like a RESTAURANT MENU:
+        • IF you want pizza → order pizza
+        • ELIF you want burger → order burger
+        • ELIF you want salad → order salad
+        • ELSE → order water 😢
+        
+        🔧 IMPORTANT:
+        • Python checks conditions IN ORDER
+        • Stops at the FIRST True condition
+        • 'elif' can be used multiple times
+        • 'else' is optional
+        
+        🎮 EXAMPLE:
+        score = 85
+        
+        if score >= 90:
+            grade = 'A'
+        elif score >= 80:
+            grade = 'B'
+        elif score >= 70:
+            grade = 'C'
+        elif score >= 60:
+            grade = 'D'
+        else:
+            grade = 'F'
+        
+        print(f"Score: {score}, Grade: {grade}")  # Score: 85, Grade: B
+        """)
+            
+            examples_choice = get_global_examples_valid_input("\n🔹 Want to see elif examples? (yes/no): ")
+            if examples_choice == 'yes':
+                print("\n📝 ELIF EXAMPLES:")
+                print("   # Traffic light system")
+                print("   light = 'yellow'")
+                print("   if light == 'red':")
+                print("       print('STOP! 🛑')")
+                print("   elif light == 'yellow':")
+                print("       print('SLOW DOWN! ⚠️')")
+                print("   elif light == 'green':")
+                print("       print('GO! 🟢')")
+                print("   else:")
+                print("       print('Invalid light color')")
+                print("   # Output: SLOW DOWN! ⚠️")
+                print()
+                print("   # Day of week check")
+                print("   day = 'Saturday'")
+                print("   if day == 'Saturday' or day == 'Sunday':")
+                print("       print('It\\'s the weekend! 🎉')")
+                print("   elif day == 'Friday':")
+                print("       print('TGIF! Almost weekend! 📅')")
+                print("   else:")
+                print("       print('Time to work! 💼')")
+                print("   # Output: It's the weekend! 🎉")
+ 
+        def teach_nested_conditionals():
+            """Teach nested conditional statements"""
+            print_global_separator()
+            print("📘 PART 4: Nested Conditionals - Decisions Within Decisions")
+            print_global_separator()
+            
+            print("""
+        🎯 NESTED CONDITIONALS:
+        Putting if statements INSIDE other if statements.
+        
+        💡 REAL-LIFE ANALOGY:
+        Like applying for a job:
+        • IF you have degree
+            • IF you have experience → Get senior position
+            • ELSE → Get junior position
+        • ELSE → No interview 😢
+        
+        🔧 EXAMPLE:
+        age = 25
+        has_license = True
+        
+        if age >= 18:
+            print("You are old enough!")
+            if has_license:
+                print("You can drive a car! 🚗")
+            else:
+                print("Get your license first! 📝")
+        else:
+            print(f"Wait {18 - age} years to drive.")
+        
+        ⚠️ IMPORTANT:
+        • Keep nesting levels LIMITED (3-4 max)
+        • Deep nesting = Hard to read code
+        • Consider using logical operators (and/or) instead
+        """)
+            
+            examples_choice = get_global_examples_valid_input("\n🔹 Want to see nested conditionals examples? (yes/no): ")
+            if examples_choice == 'yes':
+                print("\n📝 NESTED CONDITIONALS EXAMPLES:")
+                print("   # Restaurant ordering system")
+                print("   hungry = True")
+                print("   has_money = True")
+                print("   ")
+                print("   if hungry:")
+                print("       print('Looking for food... 🍽️')")
+                print("       if has_money:")
+                print("           print('Going to a restaurant! 🍜')")
+                print("       else:")
+                print("           print('Cooking at home! 🏠')")
+                print("   else:")
+                print("       print('Not hungry, maybe later! 😴')")
+                print()
+                print("   # Login system")
+                print("   username = 'student'")
+                print("   password = 'python123'")
+                print("   ")
+                print("   if username == 'student':")
+                print("       print('Username correct! ✓')")
+                print("       if password == 'python123':")
+                print("           print('Access granted! Welcome! 🎉')")
+                print("       else:")
+                print("           print('Wrong password! ❌')")
+                print("   else:")
+                print("       print('Username not found! ❌')")
+ 
+        def teach_conditional_operators():
+            """Teach combining conditions with logical operators"""
+            print_global_separator()
+            print("📘 PART 5: Combining Conditions - AND, OR, NOT")
+            print_global_separator()
+            
+            print("""
+        🎯 COMBINING MULTIPLE CONDITIONS:
+        Use logical operators to check multiple conditions at once.
+        
+        🔧 LOGICAL OPERATORS IN CONDITIONALS:
+        
+        and → ALL conditions must be True
+        if age >= 18 and has_id:
+            print("Can enter club")
+        
+        or → AT LEAST ONE condition must be True
+        if day == 'Saturday' or day == 'Sunday':
+            print("Weekend! 🎉")
+        
+        not → REVERSES the condition
+        if not is_raining:
+            print("Go for a walk! ☀️")
+        
+        💡 REAL EXAMPLES:
+        # Scholarship eligibility
+        gpa = 3.5
+        family_income = 40000
+        is_first_gen = True
+        
+        if gpa >= 3.0 and family_income < 50000:
+            print("Eligible for need-based scholarship!")
+        
+        if is_first_gen or gpa >= 3.8:
+            print("Eligible for merit scholarship!")
+        
+        # Weekend shopping
+        is_weekend = True
+        has_coupon = False
+        
+        if is_weekend or has_coupon:
+            print("Let's go shopping! 🛍️")
+        else:
+            print("Wait for weekend or coupon! ⏰")
+        """)
+            
+            examples_choice = get_global_examples_valid_input("\n🔹 Want to see combined conditions examples? (yes/no): ")
+            if examples_choice == 'yes':
+                print("\n📝 COMBINED CONDITIONS EXAMPLES:")
+                print("   # Movie ticket pricing")
+                print("   age = 12")
+                print("   is_student = True")
+                print("   ")
+                print("   if age < 5:")
+                print("       price = 'Free'")
+                print("   elif age < 18 or is_student:")
+                print("       price = 'Discounted ($8)'")
+                print("   else:")
+                print("       price = 'Regular ($12)'")
+                print("   print(f'Price: {price}')")
+                print("   # Output: Price: Discounted ($8)")
+                print()
+                print("   # Weather decision maker")
+                print("   is_raining = False")
+                print("   is_sunny = True")
+                print("   temperature = 25")
+                print("   ")
+                print("   if not is_raining and temperature > 20:")
+                print("       print('Perfect day for outdoor activities! ☀️')")
+                print("   elif is_raining or temperature < 10:")
+                print("       print('Better stay indoors! 🏠')")
+                print("   else:")
+                print("       print('Maybe a light jacket is enough 🧥')")
+ 
+        def teach_common_mistakes():
+            """Teach common mistakes with conditional statements"""
+            print_global_separator()
+            print("📘 PART 6: Common Mistakes & Best Practices")
+            print_global_separator()
+            
+            print("""
+        ⚠️ COMMON MISTAKES:
+        
+        1️⃣ INDENTATION ERRORS:
+        # WRONG ❌
+        if age >= 18:
+        print("Adult")  # Indentation error!
+        
+        # CORRECT ✓
+        if age >= 18:
+            print("Adult")
+        
+        2️⃣ USING = INSTEAD OF ==:
+        # WRONG ❌ (Assignment, not comparison)
+        if age = 18:
+            print("You are 18")
+        
+        # CORRECT ✓
+        if age == 18:
+            print("You are 18")
+        
+        3️⃣ FORGETTING COLON:
+        # WRONG ❌
+        if age >= 18
+            print("Adult")
+        
+        # CORRECT ✓
+        if age >= 18:
+            print("Adult")
+        
+        4️⃣ WRONG INDENTATION LEVEL:
+        # WRONG ❌ (Mixing spaces and tabs)
+        if condition:
+          print("4 spaces")
+         print("Mixed spaces")  # Inconsistent!
+        
+        5️⃣ LOGICAL OPERATOR CONFUSION:
+        # WRONG ❌ (This is always True!)
+        if age == 18 or 21:
+            print("Age is 18 or 21")
+        
+        # CORRECT ✓
+        if age == 18 or age == 21:
+            print("Age is 18 or 21")
+        
+        💡 BEST PRACTICES:
+        1. Always use 4 spaces for indentation
+        2. Keep conditions simple and readable
+        3. Use parentheses for complex conditions
+        4. Limit nesting depth (max 3-4 levels)
+        5. Use elif for mutually exclusive conditions
+        6. Consider using dictionaries for many conditions
+        7. Write conditions that read like English
+        """)
+            
+            examples_choice = get_global_examples_valid_input("\n🔹 Want to see examples of best practices? (yes/no): ")
+            if examples_choice == 'yes':
+                print("\n📝 BEST PRACTICE EXAMPLES:")
+                print("   # Good: Readable condition")
+                print("   is_eligible = age >= 18 and has_license and not is_suspended")
+                print("   if is_eligible:")
+                print("       print('Can drive')\n")
+                print("   # Better: Using parentheses for clarity")
+                print("   if (age >= 18) and (has_license) and (not is_suspended):")
+                print("       print('Can drive')\n")
+                print("   # Using dictionary instead of many elifs")
+                print("   day = 'Monday'")
+                print("   schedules = {")
+                print("       'Monday': 'Meeting at 10 AM',")
+                print("       'Tuesday': 'Workshop at 2 PM',")
+                print("       'Wednesday': 'No events'")
+                print("   }")
+                print("   print(schedules.get(day, 'No schedule found'))")
+ 
+        def teach_all_conditional_topics():
+            """Teach all conditional topics in sequence"""
+            teach_conditionals_basics()
+            teach_if_else()
+            teach_elif()
+            teach_nested_conditionals()
+            teach_conditional_operators()
+            teach_common_mistakes()
+ 
+        def explain_conditional_statements():
+            """Comprehensive guide to conditional statements"""
+            print("\n   🤔 What are conditional statements?")
+            print("\n🤔 CONDITIONAL STATEMENTS: CODE'S DECISION-MAKERS")
+            print_global_separator()
+            
+            print("""
+        🎯 WHAT ARE THEY?
+        Conditional statements allow your code to MAKE DECISIONS
+        and execute different blocks of code based on conditions.
+        
+        🔧 THE DECISION-MAKING TOOLKIT:
+        if     → Executes block if condition is True
+        elif   → Checks another condition if previous was False
+        else   → Executes block if all previous conditions were False
+        
+        🔑 IMPORTANT NOTE:
+        Indentation is CRUCIAL in Python to define code blocks!
+        """)
+            
+            # Track which topics have been learned
+            topics_learned = []
+            
+            while True:
+                # Display menu
+                print("\n📚 CONDITIONAL STATEMENTS TOPIC MENU:")
+                print("   1. IF Statements - The Basics")
+                print("   2. If-Else Statements - Two Paths")
+                print("   3. Elif Statements - Multiple Paths")
+                print("   4. Nested Conditionals - Decisions Within Decisions")
+                print("   5. Combining Conditions - AND, OR, NOT")
+                print("   6. Common Mistakes & Best Practices")
+                print("   7. All topics (Complete guide)")
+                print("   8. I'm done with conditionals (exit)")
+                
+                topic_choice = get_global_menu_choice("\n🔹 Which conditional topic would you like to learn? (1-8/exit): ", 1, 8)
+                
+                # Handle exit
+                if topic_choice == 'exit':
+                    print("\n👋 Session ended. Goodbye!")
+                    exit()
+                
+                # Handle return to main menu
+                if topic_choice == '8':
+                    print("\n✅ Exiting conditional statements section...")
+                    break
+                
+                # Check if topic was already learned (skip for "All topics")
+                if topic_choice in topics_learned and topic_choice != '7':
+                    review = get_global_valid_input(f"\n🔹 You've already learned topic {topic_choice}. Review it again? (yes/no): ")
+                    if review == 'no':
+                        continue
+                
+                # Handle "All topics" selection
+                if topic_choice == '7':
+                    teach_all_conditional_topics()
+                    topics_learned = ['1', '2', '3', '4', '5', '6']
+                    print_global_separator()
+                    print("🎉 COMPLETE CONDITIONAL STATEMENTS GUIDE FINISHED!")
+                    print_global_separator()
+                    break
+                
+                # Teach individual topic based on choice
+                if topic_choice == '1':
+                    teach_conditionals_basics()
+                    if '1' not in topics_learned:
+                        topics_learned.append('1')
+                
+                elif topic_choice == '2':
+                    teach_if_else()
+                    if '2' not in topics_learned:
+                        topics_learned.append('2')
+                
+                elif topic_choice == '3':
+                    teach_elif()
+                    if '3' not in topics_learned:
+                        topics_learned.append('3')
+                
+                elif topic_choice == '4':
+                    teach_nested_conditionals()
+                    if '4' not in topics_learned:
+                        topics_learned.append('4')
+                
+                elif topic_choice == '5':
+                    teach_conditional_operators()
+                    if '5' not in topics_learned:
+                        topics_learned.append('5')
+                
+                elif topic_choice == '6':
+                    teach_common_mistakes()
+                    if '6' not in topics_learned:
+                        topics_learned.append('6')
+                
+                # Ask if user wants to continue with conditionals
+                continue_learning = get_global_valid_input("\n🔹 Want to learn another conditional topic? (yes/no): ")
+                if continue_learning == 'no':
+                    print("\n✅ Exiting conditional statements section...")
+                    break
+ 
+        # Now call explain_conditional_statements()
+        explain_conditional_statements()
 
+        # Practice section
+        practice = get_global_valid_input("\n🔹 Want to practice with conditional statements? (yes/no): ")
+        if practice == 'yes':
+            print_global_separator()
+            print("🧪 INTERACTIVE CONDITIONAL STATEMENTS PRACTICE")
+            print_global_separator()
+            
+            print("Let's practice with conditional statements! 📊")
+            print("\nEnter a number and I'll analyze it using if-elif-else:")
+            
+            user_number = input("Enter a number: ").strip()
+            
+            if user_number:
+                try:
+                    num = float(user_number)
+                    
+                    print(f"\n📊 ANALYZING YOUR NUMBER: {num}")
+                    
+                    # Let the user see conditional logic in action
+                    if num > 0:
+                        print(f"   ✅ {num} is POSITIVE")
+                        if num > 100:
+                            print(f"   🚀 {num} is a BIG positive number!")
+                        elif num > 50:
+                            print(f"   👍 {num} is a medium positive number")
+                        else:
+                            print(f"   👌 {num} is a small positive number")
+                    elif num < 0:
+                        print(f"   ❌ {num} is NEGATIVE")
+                        if num < -100:
+                            print(f"   🧊 {num} is very negative!")
+                        elif num < -50:
+                            print(f"   📉 {num} is moderately negative")
+                        else:
+                            print(f"   📌 {num} is slightly negative")
+                    else:
+                        print(f"   ⚖️ {num} is ZERO")
+                        print("   🔄 Zero is neither positive nor negative")
+                    
+                    # Check if integer or decimal
+                    if num == int(num):
+                        print(f"   🔢 {num} is an INTEGER")
+                    else:
+                        print(f"   💫 {num} is a DECIMAL/FLOAT")
+                    
+                    # Even or odd (only for positive integers)
+                    if num == int(num) and num > 0:
+                        if int(num) % 2 == 0:
+                            print(f"   🟢 {int(num)} is EVEN")
+                        else:
+                            print(f"   🟡 {int(num)} is ODD")
+                    
+                    print("\n✅ Practice complete! You've seen conditional statements in action!")
+                    
+                except ValueError:
+                    print("⚠️  Please enter a valid number next time!")
+            else:
+                print("⚠️  No number entered for practice.")
+ 
+        Assistant_Response = "Excellent! You've learned comprehensive conditional statements in Python!"
+        print(Assistant_Response)
+ 
+    # ========== SECTION 6: ASK TO LEARN ANOTHER TOPIC ==========
+    # Ask if user wants to learn another topic
+    print_global_separator()
+    learn_more = get_global_valid_input("\n🔹 Would you like to learn another topic? (yes/no/exit): ")
+ 
+    if learn_more == 'exit':
+        print("\n👋 Goodbye! Come back whenever you need me")
+        exit()
+    elif learn_more == 'no':
+        break
+    # If yes, the loop continues
+ 
 # ========== FINAL MESSAGE ==========
 print_global_separator()
 Assistant_Response = "Congratulations! You've completed the Python basics tutorial 🐍 You learned what you wanted!"
