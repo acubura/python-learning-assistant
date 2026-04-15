@@ -185,12 +185,13 @@ and no / skip / nuh uh! to move on.
 Contributions are welcome! You don't have to be an expert to help.
 
 Ways to contribute:
-🧠 Improve beginner-friendly explanations
-✏️ Fix grammar or clarity issues
-➕ Add new beginner topics or advanced modules
-🧪 Add more practice exercises
-🐛 Report bugs (Critical for Preview Cycle stability!)
-💡 Suggest new learning features
+
+- 🧠 Improve beginner-friendly explanations
+- ✏️ Fix grammar or clarity issues
+- ➕ Add new beginner topics or advanced modules
+- 🧪 Add more practice exercises
+- 🐛 Report bugs (Critical for Preview Cycle stability!)
+- 💡 Suggest new learning features
 
 Feel free to open an Issue or submit a Pull Request.
 
