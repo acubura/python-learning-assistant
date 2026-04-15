@@ -45,7 +45,7 @@ Your feedback helps improve stability and the learning experience.
 
 ## 🆕 What's New in v1.0.3
 
-### 📚 1. New Topics Added (Total: 12 Topics)
+### 📚 1. Expanded Curriculum (Total: 12 Topics)
 
 We've expanded the curriculum to cover even more essential Python fundamentals!
 - **Data Types in Python:** Learn about `int`, `float`, `str`, `bool`, `list`, `tuple`, and `dict`.
