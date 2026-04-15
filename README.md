@@ -4,7 +4,7 @@
 
 Python Teaching Assistant is an interactive, beginner-friendly console program designed to teach Python fundamentals in a simple, guided, and engaging way.
 
-Instead of learning from long theory or textbooks, this assistant behaves like a **personal Python tutor**. It talks with the user, asks what they want to learn, and explains each concept using real-life analogies, step-by-step guidance, and optional examples.
+Instead of learning from long theory or textbooks, this assistant behaves like a personal Python tutor. It talks with the user, asks what they want to learn, and explains each concept using real-life analogies, step-by-step guidance, and optional examples.
 
 It is perfect for learners who want a friendly and interactive introduction to Python programming.
 
@@ -14,80 +14,93 @@ It is perfect for learners who want a friendly and interactive introduction to P
 
 🚧 **This is the Preview Cycle version.**
 
-This version is considered unstable. During the Preview Cycle:
+This version is considered **unstable**. During the Preview Cycle:
 
 - Developers experiment with new features
 - Improvements are continuously added
 - Bugs (including critical ones) may appear
 - Major structural changes may happen
 
-If you encounter **any bugs, unexpected behavior, or critical errors**, please report them.  
-Your feedback helps improve stability and learning experience.
+**If you encounter any bugs, unexpected behavior, or critical errors, please report them.**  
+Your feedback helps improve stability and the learning experience.
 
 ---
 
 ## 🎯 Key Features
 
-✅ Interactive Learning Flow — The assistant communicates like a real tutor  
-✅ Smart Input Validation — Understands flexible responses like yes, y, skip, exit, etc.  
-✅ Advanced Question Content Validation — Accepts only proper Python-related questions  
-✅ Beginner-Friendly Explanations — Complex ideas explained in simple language  
-✅ Real-Life Analogies — Programming concepts made easier to understand  
-✅ Step-by-Step Topic Guidance — Learn one concept at a time  
-✅ Optional Examples for Each Topic — Reinforce learning with real code  
-✅ Dedicated Strings Learning Module — Includes deep string concepts + practice mode  
-✅ Improved Code Readability — Clean, well-organized code structure for easier maintenance  
-✅ Fully Console-Based — No external libraries required  
+- ✅ **Interactive Learning Flow** — The assistant communicates like a real tutor
+- ✅ **Smart Input Validation** — Understands flexible responses like `yes`, `y`, `skip`, `exit`, and modern slang
+- ✅ **Advanced Question Content Validation** — Accepts only proper, complete Python-related questions
+- ✅ **Beginner-Friendly Explanations** — Complex ideas explained in simple language
+- ✅ **Real-Life Analogies** — Programming concepts made easier to understand
+- ✅ **Step-by-Step Topic Guidance** — Learn one concept at a time
+- ✅ **Optional Examples for Each Topic** — Reinforce learning with real code
+- ✅ **12 Comprehensive Topics** — Covers all essential Python basics for beginners
+- ✅ **Practice Sections for All 12 Topics** — Hands-on interactive exercises for every single topic
+- ✅ **Dedicated Strings & Conditional Statements Learning Module** — Includes deep string concepts + full conditional logic + practice mode
+- ✅ **Improved Code Readability** — Clean, well-organized code structure with clear section markers for easier maintenance
+- ✅ **Fully Console-Based** — No external libraries required
 
 ---
 
-## 🆕 What's New in v1.0.2
+## 🆕 What's New in v1.0.3
 
-### 📖 1. Smart Input Validations Code Readability Improvement
+### 📚 1. New Topics Added (Total: 12 Topics)
 
-All input validation functions have been completely reorganized for better clarity and maintainability:
+We've expanded the curriculum to cover even more essential Python fundamentals!
+- **Data Types in Python:** Learn about `int`, `float`, `str`, `bool`, `list`, `tuple`, and `dict`.
+- **Conditional Statements (Complete Module):** A full deep dive into decision-making in Python, including `if`, `else`, `elif`, nested conditionals, and logical operators.
 
-- **Constants at the top** — All response categories (`YES_RESPONSES`, `NO_RESPONSES`, `EXIT_RESPONSES`, etc.) are now defined at the beginning for easy modification
-- **Clear section headings** — Each validation function now has its own descriptive heading:
-  - `# ----- Global Input Validation Functions -----`
-  - `# ----- Global Question-Specific Input Validation Function -----`
-  - `# ----- Global Menu Choice Functions -----`
-  - `# ----- Global Examples-Specific Input Validation Function -----`
-  - `# ----- Global Question Content Validation Function -----`
-- **Visual separators inside functions** — Logical blocks within functions are clearly marked (`# ----- EMPTY INPUT CHECK -----`, `# ----- EXACT MATCHES -----`, etc.)
-- **Consistent structure** — All 5 validation functions now follow the same clean pattern
-- **Helper functions** — Complex validation logic is broken down into smaller, self-explanatory helper functions
+### 🧪 2. Practice Sections for ALL 12 Topics
 
-These improvements make the codebase much easier for contributors to understand, navigate, and modify without breaking existing functionality.
+Interactive practice is now available for **every single topic** in the menu. Previously, some topics (like Strings) lacked this feature. Now, every learner gets hands-on experience to reinforce what they've just learned.
+
+### 🗣️ 3. Database Update: Smart Input Validation
+
+The assistant now understands modern, casual slang and conversational responses!
+- **New additions include:** `fr!`, `ngl!`, `tbh!`, `lock in bro!`, `nuh uh!`, `bruh!`, `dipping out`, and many more.
+- This makes the conversation feel much more natural and less robotic.
+
+### 📖 4. Code Readability & Organization Improvements
+
+The codebase has been significantly restructured for clarity and maintainability:
+
+- **Professional Header:** Added a comprehensive header comment with creator info, version, and purpose.
+- **6 Clear Section Markers:** The code is now logically divided into distinct sections  (Intro & Setup, Input Validation, Helper Functions, Main Program & User Questions, Topics 1-6, Topics 7-12, and Ask to Learn Another Topic).
+- **Consistent Formatting:** All validation functions follow a clean, uniform pattern.
 
 > 🔎 **Code Readability Note:**  
-> Readability improvements are being done step-by-step and carefully to avoid breaking existing functionality.  
-> During this gradual refactoring process, minor bugs may appear and structural adjustments may temporarily affect behavior. Stability is continuously being monitored.  
-> If you encounter any issues — especially critical bugs — please report them immediately.  
+> Readability improvements are being done step-by-step and carefully to avoid breaking existing functionality. During this gradual refactoring process, minor bugs may appear and structural adjustments may temporarily affect behavior. Stability is continuously being monitored.  
+>   
+> **If you encounter any issues — especially critical bugs — please report them immediately.**  
 > This project values clean, readable, and maintainable code — but improvements will be implemented responsibly and progressively.
 
 ---
 
-## 🐛 Bug Fixes
+## ✅ Bug Status & Reporting
 
-### ✔ Question Prompt Validation Bug Fix
+### 🐛 Current Bug Status: **No Critical Bugs Found!** 🎉
+The current `v1.0.3` codebase has been scanned and validated. All syntax, indentation, and logic checks have passed.
 
-Fixed an issue where the assistant was accepting incomplete or fragment questions:
+However, as this is a **Preview Cycle** version with ongoing active development, hidden bugs may still surface during specific user interactions.
 
-- **Before:** The assistant accepted fragments like `"Can you teach"` (only 3 words)
-- **After:** Now properly requires **complete questions with at least 4 words**
-- ✅ Now accepts: `"Can you teach me Python?"`, `"How do I learn variables?"`, `"What is a function?"`
-- ❌ Rejects: `"Can you teach"`, `"How to"`, `"What is"`
-- Fix the "How to Run" commands
-- Remove the duplicated code from the source code
+### 📢 Kind Request
 
-This ensures users ask full, meaningful questions before the assistant responds.
+If you encounter:
+
+- Unexpected crashes
+- Incorrect topic navigation
+- Validation issues (accepting wrong input or rejecting correct input)
+- Or any other odd behavior
+
+**Please report the bug immediately.**  
+Your detailed reports help us ensure the assistant is stable, reliable, and helpful for all learners.
 
 ---
 
 ## 📘 Topics Covered
 
-The assistant teaches the following **10 beginner Python topics:**
+The assistant teaches the following **12** beginner Python topics:
 
 1. **Hello World** – Your first Python program
 2. **Functions** – Reusable blocks of code
@@ -99,20 +112,15 @@ The assistant teaches the following **10 beginner Python topics:**
 8. **Input Function** – Taking user input from the keyboard
 9. **Comments in Python** – Writing notes inside code
 10. **Strings in Python (Complete Module)** – A full deep dive into text handling
+11. **Data Types in Python** – Understanding int, float, list, tuple, dict, and more
+12. **Conditional Statements (Complete Module)** – Mastering `if`, `elif`, and `else` logic
 
----
+### 🔤 Strings & Conditionals Modules Include:
 
-## 🔤 Strings Module Includes
+These two topics are **mini-courses** inside the assistant:
 
-The **Strings** section is a complete mini-course inside the assistant. It covers:
-
-- String creation and basics
-- Indexing and slicing
-- String operations (concatenation, repetition, membership)
-- String methods (strip, split, replace, etc.)
-- String formatting (f-strings, `format()` method, `%` formatting)
-- Common string errors and best practices
-- Interactive string practice session
+- **Strings:** Creation, indexing, slicing, operations, methods, formatting (f-strings), and common errors.
+- **Conditionals:** `if` basics, `if-else` paths, `elif` chains, nested decisions, combining conditions with `and`/`or`/`not`, and best practices.
 
 ---
 
@@ -135,74 +143,56 @@ python learning.py
 
 ---
 
+## ⚙️ Requirements
+
+Python 3.14.4
+No external libraries needed — Uses 100% Python Standard Library.
+
+> 🟢 **Why Python 3.14?**  
+> Python 3.14 offers better performance, improved security, and modern language improvements. Using the latest version ensures long-term project stability and compatibility.
+
+---
+
 ## 🧠 How It Works
 
-When you start the program:
+1. The assistant introduces itself.
+2. It asks if you have a specific Python question (with smart validation).
+3. It presents a menu of 12 Python topics.
+4. You choose what to learn (e.g., type 3 for Variables).
+5. The assistant explains the topic step-by-step with analogies.
+6. You can choose to see code examples or skip them.
+7. You can choose to practice the concept interactively.
+8. You can continue learning another topic or exit anytime.
 
-1. The assistant introduces itself
-2. It asks if you have a Python question
-3. It validates your question properly
-4. It offers a menu of Python topics
-5. You choose what to learn
-6. The assistant explains step-by-step
-7. You can choose to see examples or skip
-8. You can continue learning topic-by-topic
+**Flexible Commands:**  
 
-You can type:
-
-- `yes` / `y` → Learn the topic
-- `no` / `n` / `skip` → Skip the topic
-- `exit` → End the session anytime
-
-The assistant understands flexible human-like responses, not just strict commands.
+The assistant understands yes / y / teach me / fr! to proceed, 
+and no / skip / nuh uh! to move on.
 
 ---
 
 ## 🧩 Who Is This For?
 
-- 👶 Absolute beginners with zero coding experience
-- 🎓 School and college students learning Python basics
-- 👨‍🏫 Teachers who want a simple Python demo tool
-- 💻 Self-learners who prefer interactive guidance over theory
-
----
-
-## ⚙️ Requirements
-
-- Python 3.14.3
-- No external libraries needed
-
-Just install Python and run the script — that's all.
-
----
-
-## 🟢 Why Use Python 3.14?
-
-Python 3.14 offers:
-
-- Better performance
-- Improved security
-- Modern language improvements
-- Compatibility with new tools and libraries
-
-Using the latest version ensures long-term project stability.
+👶 Absolute beginners with zero coding experience
+🎓 School and college students learning Python basics
+👨‍🏫 Teachers who want a simple, interactive Python demo tool
+💻 Self-learners who prefer guided conversation over textbooks
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome!
+Contributions are welcome! You don't have to be an expert to help.
 
-You don't have to be an expert to help. Here are some ways to contribute:
+Ways to contribute:
+🧠 Improve beginner-friendly explanations
+✏️ Fix grammar or clarity issues
+➕ Add new beginner topics or advanced modules
+🧪 Add more practice exercises
+🐛 Report bugs (Critical for Preview Cycle stability!)
+💡 Suggest new learning features
 
-- 🧠 Improve beginner-friendly explanations
-- ✏️ Fix grammar or clarity
-- ➕ Add new beginner topics
-- 🧪 Add more practice exercises
-- 🐛 Report bugs
-- 💡 Suggest learning features
-
-Feel free to open an issue or submit a pull request.
+Feel free to open an Issue or submit a Pull Request.
 
 ---
 
@@ -216,7 +206,9 @@ This project is licensed under the MIT License.
 
 Learning programming should feel exciting, not overwhelming.
 
-This assistant was built to make your first steps in Python  
-**friendly, interactive, and enjoyable.**
+This assistant was built to make your first steps in Python 
+friendly, interactive, and enjoyable.
 
 Happy Coding! 🐍✨
+
+----
