@@ -173,10 +173,10 @@ and no / skip / nuh uh! to move on.
 
 ## 🧩 Who Is This For?
 
-👶 Absolute beginners with zero coding experience
-🎓 School and college students learning Python basics
-👨‍🏫 Teachers who want a simple, interactive Python demo tool
-💻 Self-learners who prefer guided conversation over textbooks
+- 👶 Absolute beginners with zero coding experience
+- 🎓 School and college students learning Python basics
+- 👨‍🏫 Teachers who want a simple, interactive Python demo tool
+- 💻 Self-learners who prefer guided conversation over textbooks
 
 ---
 
