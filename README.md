@@ -1,4 +1,4 @@
-# Python Teaching Assistant Preview 🤖🐍
+# Python Teaching Assistant Preview v1.0.3 🤖🐍
 
 ## 🌟 Overview
 
