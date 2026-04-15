@@ -53,7 +53,7 @@ We've expanded the curriculum to cover even more essential Python fundamentals!
 
 ### 🧪 2. Practice Sections for ALL 12 Topics
 
-Interactive practice is now available for **every single topic** in the menu. Previously, some topics (like Strings) lacked this feature. Now, every learner gets hands-on experience to reinforce what they've just learned.
+Interactive practice is now available for **every single topic** in the menu. Previously, some topics (except Strings) lacked this feature. Now, every learner gets hands-on experience to reinforce what they've just learned.
 
 ### 🗣️ 3. Database Update: Smart Input Validation
 
