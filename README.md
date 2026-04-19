@@ -18,6 +18,15 @@ It is perfect for learners who want a friendly and interactive introduction to P
 
 ---
 
+## ⭐ Support the Project
+
+If this assistant helped you learn Python, please consider giving it a star!
+It helps more learners discover this project.
+
+[![Star on GitHub](https://img.shields.io/github/stars/acubura/python-learning-assistant?style=social)](https://github.com/acubura/python-learning-assistant)
+
+---
+
 ## 🔄 Preview Cycle Notice (Important)
 
 🚧 **This is the Preview Cycle version.**
