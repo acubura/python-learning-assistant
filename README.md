@@ -1,5 +1,11 @@
 <img width="1920" height="1080" alt="Python Teaching Assistant Promotion" src="https://github.com/user-attachments/assets/0808bfd9-ee46-4d5a-9367-9fdb221eef5b" />
 
+![Python](https://img.shields.io/badge/Python-3.14.4-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Status](https://img.shields.io/badge/Status-Preview%20Cycle-orange)
+![Platform](https://img.shields.io/badge/Platform-Console-lightgrey)
+![Dependencies](https://img.shields.io/badge/Dependencies-None-brightgreen)
+
 # Python Teaching Assistant Preview v1.0.3 🤖🐍
 
 ## 🌟 Overview
