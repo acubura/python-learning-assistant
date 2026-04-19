@@ -1,3 +1,5 @@
+<img width="1920" height="1080" alt="Python Teaching Assistant Promotion" src="https://github.com/user-attachments/assets/0808bfd9-ee46-4d5a-9367-9fdb221eef5b" />
+
 # Python Teaching Assistant Preview v1.0.3 🤖🐍
 
 ## 🌟 Overview
