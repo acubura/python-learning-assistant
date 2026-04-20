@@ -3,7 +3,7 @@
 """
 PYTHON TEACHING ASSISTANT
 Created by: M Qasim Farooqi
-Role: BS IT Student | Python Developer · AI Prompt Strategist · Digital Creator | I build, analyze & create
+Role: BS IT Student | Python Developer · AI Prompt Strategist · Digital Creator & Game Systems Analyst | I build, analyze & create
 Version: 1.0.3
 Category: Preview
 Purpose: Learn Python basics through interactive teaching with 12 comprehensive topics
