@@ -7,6 +7,7 @@
 ![Platform](https://img.shields.io/badge/Platform-Console-lightgrey)
 ![Dependencies](https://img.shields.io/badge/Dependencies-None-brightgreen)
 
+
 # Koda Preview v1.0.3 🤖🐍
 
 ## 🌟 Overview
