@@ -1,4 +1,4 @@
-<img width="1920" height="1080" alt="Python Teaching Assistant Promotion" src="https://github.com/user-attachments/assets/0808bfd9-ee46-4d5a-9367-9fdb221eef5b" />
+<img width="1080" height="1350" alt="Koda Annoucement" src="https://github.com/user-attachments/assets/23833a03-1a78-45b7-acd5-7b567604f8e5" />
 
 ![Python](https://img.shields.io/badge/Python-3.14.4-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
@@ -6,11 +6,11 @@
 ![Platform](https://img.shields.io/badge/Platform-Console-lightgrey)
 ![Dependencies](https://img.shields.io/badge/Dependencies-None-brightgreen)
 
-# Python Teaching Assistant Preview v1.0.3 🤖🐍
+# Koda Preview v1.0.3 🤖🐍
 
 ## 🌟 Overview
 
-Python Teaching Assistant is an interactive, beginner-friendly console program designed to teach Python fundamentals in a simple, guided, and engaging way.
+Koda is an interactive, beginner-friendly console program designed to teach Python fundamentals in a simple, guided, and engaging way.
 
 Instead of learning from long theory or textbooks, this assistant behaves like a personal Python tutor. It talks with the user, asks what they want to learn, and explains each concept using real-life analogies, step-by-step guidance, and optional examples.
 
@@ -23,7 +23,7 @@ It is perfect for learners who want a friendly and interactive introduction to P
 If this assistant helped you learn Python, please consider giving it a star!
 It helps more learners discover this project.
 
-[![Star on GitHub](https://img.shields.io/github/stars/acubura/python-learning-assistant?style=social)](https://github.com/acubura/python-learning-assistant)
+[![Star on GitHub](https://img.shields.io/github/stars/acubura/koda-assistant?style=social)](https://github.com/acubura/koda-assistant)
 
 ---
 
@@ -144,16 +144,19 @@ These two topics are **mini-courses** inside the assistant:
 ## 🚀 How to Run
 
 **1️⃣ Clone the repository**
+
 ```bash
-git clone https://github.com/acubura/python-learning-assistant.git
+git clone https://github.com/acubura/koda-assistant.git
 ```
 
 **2️⃣ Open the project folder**
+
 ```bash
-cd python-learning-assistant
+cd koda-assistant
 ```
 
 **3️⃣ Run the program**
+
 ```bash
 python learning.py
 ```
@@ -161,72 +164,73 @@ python learning.py
 ---
 
 ## ⚙️ Requirements
+- Python 3.14.4
+- No external libraries needed — Uses 100% Python Standard Library.
 
-Python 3.14.4
-No external libraries needed — Uses 100% Python Standard Library.
-
-> 🟢 **Why Python 3.14.4?**  
+> 🟢 Why Python 3.14.4?
 > Python 3.14.4 offers better performance, improved security, and modern language improvements. Using the latest version ensures long-term project stability and compatibility.
 
 ---
 
 ## 🧠 How It Works
+- The assistant introduces itself.
 
-1. The assistant introduces itself.
-2. It asks if you have a specific Python question (with smart validation).
-3. It presents a menu of 12 Python topics.
-4. You choose what to learn (e.g., type 3 for Variables).
-5. The assistant explains the topic step-by-step with analogies.
-6. You can choose to see code examples or skip them.
-7. You can choose to practice the concept interactively.
-8. You can continue learning another topic or exit anytime.
+- It asks if you have a specific Python question (with smart validation).
 
-**Flexible Commands:**  
+- It presents a menu of 12 Python topics.
 
-The assistant understands yes / y / teach me / fr! to proceed, 
+- You choose what to learn (e.g., type 3 for Variables).
+
+- The assistant explains the topic step-by-step with analogies.
+
+- You can choose to see code examples or skip them.
+
+- You can choose to practice the concept interactively.
+
+- You can continue learning another topic or exit anytime.
+
+## Flexible Commands:
+
+- The assistant understands yes / y / teach me / fr! to proceed,
 and no / skip / nuh uh! to move on.
 
 ---
 
 ## 🧩 Who Is This For?
-
 - 👶 Absolute beginners with zero coding experience
+
 - 🎓 School and college students learning Python basics
+
 - 👨‍🏫 Teachers who want a simple, interactive Python demo tool
+
 - 💻 Self-learners who prefer guided conversation over textbooks
 
----
-
 ## 🤝 Contributing
-
 Contributions are welcome! You don't have to be an expert to help.
 
 Ways to contribute:
 
 - 🧠 Improve beginner-friendly explanations
+
 - ✏️ Fix grammar or clarity issues
+
 - ➕ Add new beginner topics or advanced modules
+
 - 🧪 Add more practice exercises
+
 - 🐛 Report bugs (Critical for Preview Cycle stability!)
+
 - 💡 Suggest new learning features
 
 Feel free to open an Issue or submit a Pull Request.
 
----
-
 ## 📜 License
+- This project is licensed under the MIT License.
 
-This project is licensed under the MIT License.
+# 🌈 Final Note
+- Learning programming should feel exciting, not overwhelming.
 
----
-
-## 🌈 Final Note
-
-Learning programming should feel exciting, not overwhelming.
-
-This assistant was built to make your first steps in Python 
+- This assistant was built to make your first steps in Python
 friendly, interactive, and enjoyable.
 
 Happy Coding! 🐍✨
-
-----
