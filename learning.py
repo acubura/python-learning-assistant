@@ -1,7 +1,7 @@
 # HEADER COMMENT
 
 """
-PYTHON TEACHING ASSISTANT
+Koda — Your Python Tutor Companion (formely known as Python Teaching Assistant)
 Created by: M Qasim Farooqi
 Role: BS IT Student | Python Developer · AI Prompt Strategist · Digital Creator & Game Systems Analyst | I build, analyze & create
 Version: 1.0.3
@@ -13,10 +13,10 @@ Purpose: Learn Python basics through interactive teaching with 12 comprehensive 
 # ========== SECTION 1: INTRO & SETUP ==========
 
 # Assistant introducing himself:
-name = "Python Teaching Assistant"
+name = "Koda"
 version = "1.0.3"
 category = "Preview"
-Description = "An Assistant developed to guide you with Python programming and learning."
+Description = "A Tutor Companion Assistant developed to guide you with Python programming and learning."
 
 def introduce():
     return f"Hello! I am {name}, version {version}, category, {category}. \n{Description}"
