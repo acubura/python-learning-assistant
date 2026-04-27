@@ -1,8 +1,8 @@
-# Python Teaching Assistant Code of Conduct
+# Koda Code of Conduct
 
 ## 🌟 Welcome!
 
-Hey there! 👋 The Python Teaching Assistant community is a friendly mix of professionals, volunteers, and learners like you from all around the world. We're here to mentor, teach, connect, and grow together.
+Hey there! 👋 The Koda community is a friendly mix of professionals, volunteers, and learners like you from all around the world. We're here to mentor, teach, connect, and grow together.
 
 **You belong here.** Whether you're a beginner writing your first line of code or an experienced developer helping others, this space is for everyone.
 
@@ -61,7 +61,7 @@ You won't get in trouble for speaking up. You'll be helping make this community 
 
 ## 🌍 Where These Rules Apply
 
-This Code applies in all Python Teaching Assistant spaces:
+This Code applies in all Koda spaces:
 - GitHub issues, pull requests, and discussions
 - Any chat rooms, emails, or forums we create
 - Community events (online or in person)
@@ -79,8 +79,8 @@ Just email us at [acuburagamer100@gmail.com](mailto:acuburagamer100@gmail.com). 
 
 Together, we're building a place where learning Python feels less like climbing a mountain and more like going on an adventure with friends.
 
-— M. Qasim Farooqi & the Python Teaching Assistant community
+— M. Qasim Farooqi & the Koda community
 
 ---
 
-*This Code of Conduct is adapted from the Django project and the Speak Up! project, modified with warmth and encouragement for our Python learning community.*
+*This Code of Conduct is adapted from the Django project and the Speak Up! project, modified with warmth and encouragement for our Koda learning community.*
