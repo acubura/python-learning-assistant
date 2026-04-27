@@ -205,3 +205,29 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# ==========================================
+# Koda Assistant - Project Specific Ignores
+# ==========================================
+
+# User-generated practice code (if any)
+student_practice.py
+temp_practice*.py
+user_code*.py
+
+# Session or progress data (if added in future)
+.session/
+.koda_history
+.koda_progress.json
+
+# Local settings (optional — but your settings.json is safe, so comment if not needed)
+# settings.json
+
+# Logs from the assistant (if you enable logging)
+koda.log
+koda_debug.log
+*.log
+
+# Any local configuration files created by users
+*.local.py
+config.local.json
