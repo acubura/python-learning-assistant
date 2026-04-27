@@ -25,7 +25,7 @@ It is perfect for learners who want a friendly and interactive introduction to P
 If this assistant helped you learn Python, please consider giving it a star!
 It helps more learners discover this project.
 
-[![Star on GitHub](https://img.shields.io/github/stars/acubura/koda-assistant?style=social)](https://github.com/acubura/koda-assistant)
+[![Star on GitHub](https://img.shields.io/github/stars/acubura/koda-assistant?label=Stars&style=flat-square)](https://github.com/acubura/koda-assistant)
 
 ---
 
