@@ -1,6 +1,6 @@
 ---
 name: "🐛 Bug Report"
-about: Report something that's not working right
+about: Report something that's not working right in Pytalon
 title: "Bugs 🐞"
 labels: bug
 ---
@@ -8,46 +8,69 @@ labels: bug
 ## 🐞 What's the Problem?
 
 A clear and simple description of what went wrong.  
-Don't worry — bugs happen to everyone. Thank you for helping us fix this!
+Don't worry — bugs happen to everyone. Thank you for taking the time to report this!
+
+---
 
 ## 🔁 Steps to Reproduce
 
-Steps to make the bug happen (be as specific as you can):
+Help us walk in your shoes — how do we make this bug appear?
 
-1. Go to '...'
-2. Click on '...'
-3. Scroll to '...'
-4. See the error
+1. Go to `...`
+2. Type or select `...`
+3. See the error
 
-## 🤔 What Should Happen?
+The more specific you are, the faster we can track it down. 🔍
 
-Tell us what you expected instead. Sometimes the clearest bug reports come from beginners — your fresh eyes matter!
+---
 
-## 📸 Screenshots (if helpful)
+## 🤔 What Should Have Happened?
 
-Drag and drop screenshots here. A picture can explain way more than words.
+Tell us what you expected instead.  
+Sometimes the clearest bug reports come from beginners — your fresh eyes catch things we miss!
+
+---
+
+## 📸 Screenshots or Error Messages *(if helpful)*
+
+Drag and drop screenshots here, or paste the full error message below.  
+A picture — or a traceback — can explain way more than words. 🎨
+
+```
+Paste your error message here
+```
+
+---
 
 ## 💻 Your Environment
 
-- **Python Version:** (e.g., 3.11, 3.12, 3.13, 3.14)
-- **OS:** (e.g., Windows 11, macOS, Ubuntu)
-- **Terminal/Console:** (e.g., Command Prompt, PowerShell, Terminal, VS Code terminal)
+Help us understand where the bug is happening:
+
+- **Python Version:** *(e.g., 3.12, 3.13, 3.14)*
+- **OS:** *(e.g., Windows 11, macOS, Ubuntu)*
+- **Terminal:** *(e.g., Command Prompt, PowerShell, VS Code Terminal, macOS Terminal)*
+
+---
 
 ## 📝 Anything Else?
 
-Add any other context, full error messages, or notes here. The more details, the faster we can squash the bug.
+Extra context, observations, or anything that felt off — drop it here.  
+No detail is too small. The more you share, the faster we squash it. 🥾
 
 ---
 
-### 💛 A Little Encouragement
+### 💛 Remember This
 
-Finding and reporting bugs makes Koda more reliable for everyone.  
-You're not complaining — you're contributing. Thank you. 🙌
-
-### ✅ Code of Conduct
-
-- [ ] I have read and agree to follow the project's Code of Conduct
+Finding and reporting a bug isn't complaining — it's contributing.  
+You just made **Pytalon** more reliable for every learner who comes after you.  
+That's a real impact. Thank you. 🙌
 
 ---
 
-**Thanks for helping Koda grow stronger! 🐍✨**
+### ✅ Quick Check
+
+- [ ] I have read and agree to follow the [Code of Conduct](../blob/main/CODE_OF_CONDUCT.md)
+
+---
+
+**Thanks for helping Pytalon grow stronger! 🐍✨**
